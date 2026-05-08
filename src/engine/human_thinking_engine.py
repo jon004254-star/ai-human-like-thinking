@@ -13,6 +13,9 @@ from typing import Dict, List, Optional, Any, Tuple
 from dataclasses import dataclass, field
 from pathlib import Path
 
+from .language_analyzer import LanguageAnalyzer, LanguageAnalysisResult
+from .danger_assessor import DangerAssessor, DangerAssessment, DangerLevel
+
 
 # ===== 数据结构定义 =====
 
@@ -40,6 +43,7 @@ class EventContext:
     time_pressure: float = 0.0  # 0.0 ~ 1.0 时间压力
     anonymity: float = 0.0  # 0.0 ~ 1.0 匿名程度
     participants: List[PersonProfile] = field(default_factory=list)
+    user_text: str = ""  # 用户原始语言输入（用于语言分析模块）
 
 
 @dataclass
@@ -66,6 +70,8 @@ class JudgmentResult:
     predicted_emotional_response: str
     confidence: float
     safety_check_passed: bool
+    language_analysis: Optional[Any] = None  # LanguageAnalysisResult
+    danger_assessment: Optional[Any] = None  # DangerAssessment
     notes: List[str] = field(default_factory=list)
 
 
@@ -542,18 +548,56 @@ class HumanThinkingEngine:
         self.age_modulator = AgeModulator(self.data)
         self.conflict_resolver = ConflictResolver()
         self.safety_guard = SafetyGuard()
+        self.language_analyzer = LanguageAnalyzer()
+        self.danger_assessor = DangerAssessor()
 
     def judge(self, person: PersonProfile, event: EventContext) -> JudgmentResult:
         """执行完整的思维判定流程"""
         notes = []
+        stage = self.data.get_stage(person.age)
+
+        # Step 0: 语言分析（如果有用户文本输入）
+        language_result = None
+        language_boosts = {}
+        if event.user_text:
+            language_result = self.language_analyzer.analyze(
+                event.user_text, age=person.age
+            )
+            language_boosts = self.language_analyzer.get_instinct_boosts(language_result)
+            notes.append(f"语言分析: 社会过滤分数={language_result.social_filter_score:.2f}")
+            notes.append(f"语言分析: 检测到 {len(language_result.detected_signals)} 个本能信号")
+            if language_result.danger_flags:
+                notes.append(f"语言分析: ⚠ 检测到 {len(language_result.danger_flags)} 个危险信号")
+            if language_result.fixation_detected:
+                notes.append("语言分析: ⚠ 检测到思维固化/执念")
+            if language_result.decoded_deep_intent:
+                notes.append(f"深层意图: {language_result.decoded_deep_intent}")
 
         # Step 1: 情境评估 → 本能激活度
         activations = self.situation_evaluator.evaluate(person, event)
 
+        # Step 1.5: 应用语言分析增强值
+        if language_boosts:
+            for name_en, boost in language_boosts.items():
+                # 查找匹配的本能
+                for key, act in activations.items():
+                    if name_en == key or name_en in key:
+                        old = act.current_activation
+                        act.current_activation = min(1.0, act.current_activation + boost)
+                        if act.current_activation - old > 0.1:
+                            if act.state == "normal":
+                                act.state = "elevated"
+                            elif act.state == "elevated":
+                                act.state = "exposed"
+                            act.triggering_factors.append(
+                                f"语言信号: {name_en}(+{boost:.2f})"
+                            )
+                        break
+
         # Step 2: 年龄调制 → 调制后的激活度 + 社会调制系数
         modulated_activations, social_coeff = self.age_modulator.modulate(activations, person)
         notes.append(f"社会调制系数: {social_coeff:.2f}")
-        notes.append(f"年龄阶段: {self.data.get_stage(person.age)['name']}")
+        notes.append(f"年龄阶段: {stage['name']}")
 
         # Step 3: 冲突消解 → 主导驱动
         dominant_drivers = self.conflict_resolver.resolve(modulated_activations)
@@ -563,7 +607,26 @@ class HumanThinkingEngine:
         emotion = self._predict_emotion(modulated_activations)
 
         # Step 5: 计算置信度
-        confidence = self._calculate_confidence(modulated_activations, person, event)
+        # 如果有语言分析，置信度提高
+        base_confidence = self._calculate_confidence(modulated_activations, person, event)
+        if language_result and language_result.detected_signals:
+            confidence = min(1.0, base_confidence + 0.15)
+        else:
+            confidence = base_confidence
+
+        # Step 6: 危险等级判定
+        danger_result = self.danger_assessor.assess(
+            instinct_activations=modulated_activations,
+            social_modulation_coeff=social_coeff,
+            age=person.age,
+            stage_name=stage['name'],
+            language_danger_flags=language_result.danger_flags if language_result else [],
+            fixation_detected=language_result.fixation_detected if language_result else False,
+            urgency_from_language=language_result.urgency_level if language_result else 0.0,
+        )
+        notes.append(f"危险等级: {danger_result.level_name} (分数={danger_result.score:.3f})")
+        notes.append(f"首要关切: {danger_result.primary_concern}")
+        notes.append(f"建议行动: {danger_result.recommended_action}")
 
         result = JudgmentResult(
             person_profile=person,
@@ -575,10 +638,12 @@ class HumanThinkingEngine:
             predicted_emotional_response=emotion,
             confidence=confidence,
             safety_check_passed=True,
+            language_analysis=language_result,
+            danger_assessment=danger_result,
             notes=notes
         )
 
-        # Step 6: 安全审计（不可绕过）
+        # Step 7: 安全审计（不可绕过）
         result = self.safety_guard.audit(person, event, result)
 
         return result
