@@ -1,0 +1,641 @@
+{
+  "meta": {
+    "description": "人类思维演化——各年龄阶段的思维模式、本能表达、社会规则内化程度。核心目标：理解同一事件在不同年龄的不同响应。",
+    "version": "1.0",
+    "total_stages": 8,
+    "key_theories": [
+      "Piaget认知发展理论",
+      "Erikson心理社会阶段理论",
+      "Kohlberg道德发展理论",
+      "Panksepp情感神经科学",
+      "Casey青少年脑发育研究",
+      "Carstensen社会情感选择理论(老年)"
+    ]
+  },
+
+  "stages": {
+    "infant_toddler": {
+      "name": "婴幼儿期",
+      "name_en": "Infant/Toddler",
+      "age_range": [0, 3],
+      "piaget_stage": "感觉运动期",
+      "erikson_stage": "基本信任 vs 不信任 (0-1.5岁) / 自主 vs 羞耻怀疑 (1.5-3岁)",
+      "kohlberg_level": "前习俗水平——以惩罚和服从为导向",
+
+      "cognitive_profile": {
+        "abstract_thinking": 0.0,
+        "causal_reasoning": 0.1,
+        "time_perception": "只有'现在'——没有过去和未来概念",
+        "perspective_taking": 0.0,
+        "language_ability": "快速习得期(词汇爆炸18-24月)",
+        "memory_type": "内隐记忆为主，外显记忆开始形成",
+        "executive_function": 0.05,
+        "key_feature": "客体永久性在8-12月习得(看不见≠不存在)——这是'世界独立于我'的第一个认知革命"
+      },
+
+      "instinct_profile": {
+        "description": "本能主导——尚未被社会规则有效压制。婴幼儿是观察'裸露本能'的最佳窗口。",
+        "dominant_instincts": [
+          {"instinct": "饥饿", "weight": 0.90, "reason": "直接表达——饿了就哭"},
+          {"instinct": "睡眠", "weight": 0.85, "reason": "不受社会时钟约束"},
+          {"instinct": "护幼(接收端)", "weight": 0.95, "reason": "通过哭声等信号触发成人的护幼本能"},
+          {"instinct": "好奇心", "weight": 0.80, "reason": "一切皆新——口欲期/探索期"},
+          {"instinct": "恐惧", "weight": 0.70, "reason": "陌生人焦虑(8月+)、分离焦虑"},
+          {"instinct": "喜悦", "weight": 0.85, "reason": "情绪表达直接，无社会过滤"}
+        ],
+        "suppressed_instincts": [
+          {"instinct": "归属感", "reason": "尚未形成群体概念，只依恋主要照顾者"},
+          {"instinct": "地位追求", "reason": "不存在——婴幼儿不进行社会比较"},
+          {"instinct": "意义追寻", "reason": "不存在——不具备抽象思考死亡/意义的能力"},
+          {"instinct": "公平感", "reason": "仅对'我的'和'不是我的'有模糊概念"},
+          {"instinct": "风险规避", "reason": "极弱——婴幼儿缺乏危险认知"}
+        ]
+      },
+
+      "social_rule_internalization": {
+        "level": 0.05,
+        "description": "几乎为零。社会规则需要通过外部强制(成人的'不')才能生效。如厕训练是第一个社会规则内化节点(2-3岁)。"
+      },
+
+      "emotional_regulation": {
+        "level": 0.05,
+        "description": "几乎为零。情绪来了就表达，没有'控制'概念。需要成人的外部调节(安抚、转移注意力)。"
+      },
+
+      "dominant_instinct_weight_total": 0.75,
+      "social_modulation_coefficient": 0.05
+    },
+
+    "early_childhood": {
+      "name": "儿童早期",
+      "name_en": "Early Childhood",
+      "age_range": [3, 7],
+      "piaget_stage": "前运算期",
+      "erikson_stage": "主动 vs 内疚",
+      "kohlberg_level": "前习俗水平——以工具性相对主义为导向(你帮我我就帮你)",
+
+      "cognitive_profile": {
+        "abstract_thinking": 0.1,
+        "causal_reasoning": 0.3,
+        "time_perception": "开始理解'昨天'和'明天'，但时间尺度有限",
+        "perspective_taking": 0.2,
+        "language_ability": "基本语法掌握，叙事能力发展",
+        "memory_type": "自传体记忆开始形成(3.5岁后)",
+        "executive_function": 0.15,
+        "key_feature": "自我中心主义——认为别人看到/知道的跟自己一样(三山实验)。万物有灵论——认为所有东西都有生命和意图。'为什么'爆发期——因果推理本能猛烈启动。"
+      },
+
+      "instinct_profile": {
+        "description": "本能仍强但开始被压制——儿童学会'等一等'、'分享'、'不能打人'。如厕训练完成是社会压制本能的第一个里程碑。",
+        "dominant_instincts": [
+          {"instinct": "好奇心", "weight": 0.90, "reason": "为什么爆发期——每天平均76个问题"},
+          {"instinct": "模式识别", "weight": 0.75, "reason": "快速建立世界的心智模型"},
+          {"instinct": "因果推理", "weight": 0.60, "reason": "追问为什么——像小科学家(Harris, 2012)"},
+          {"instinct": "归属感", "weight": 0.70, "reason": "开始形成同伴关系，在乎'谁是我的朋友'"},
+          {"instinct": "喜悦", "weight": 0.80, "reason": "PLAY系统(Panksepp)高度活跃"},
+          {"instinct": "恐惧", "weight": 0.55, "reason": "想象力增强带来新的恐惧(怪物/黑暗)"}
+        ],
+        "emerging_instincts": [
+          {"instinct": "公平感", "weight": 0.40, "reason": "开始有'这不公平'的概念"},
+          {"instinct": "互惠", "weight": 0.30, "reason": "理解'你分享我分享'"},
+          {"instinct": "共情", "weight": 0.35, "reason": "开始能感受他人情绪但认知共情仍弱"}
+        ],
+        "absent_instincts": [
+          "死亡意识(认为死亡是可逆的/暂时的)",
+          "意义追寻",
+          "地位追求(仅以'我比你高/我比你快'的原始形式存在)"
+        ]
+      },
+
+      "social_rule_internalization": {
+        "level": 0.25,
+        "description": "开始理解基本规则(不能打人、要分享)但遵守不稳定。规则是'大人说的'，不是'我理解的'。道德判断基于后果(打破10个杯子比故意打破1个更坏——Piaget道德判断研究)。"
+      },
+
+      "emotional_regulation": {
+        "level": 0.20,
+        "description": "开始学会'用语言而不是用拳头'，但调节能力弱。需要外部支持(成人安抚)。发脾气(tantrum)是典型表现。"
+      },
+
+      "dominant_instinct_weight_total": 0.55,
+      "social_modulation_coefficient": 0.20
+    },
+
+    "middle_childhood": {
+      "name": "儿童中期",
+      "name_en": "Middle Childhood",
+      "age_range": [7, 12],
+      "piaget_stage": "具体运算期",
+      "erikson_stage": "勤奋 vs 自卑",
+      "kohlberg_level": "习俗水平开始——'好孩子'取向",
+
+      "cognitive_profile": {
+        "abstract_thinking": 0.3,
+        "causal_reasoning": 0.55,
+        "time_perception": "理解日历时间，可以规划未来(但范围有限)",
+        "perspective_taking": 0.5,
+        "language_ability": "完全掌握，元语言意识发展",
+        "memory_type": "记忆策略(复述/组织)开始主动使用",
+        "executive_function": 0.4,
+        "key_feature": "守恒概念习得(数量不随外观改变)——'看起来不一样≠真的不一样'的认知革命。逻辑思维出现但局限于具体事物——'如果A>B且B>C，那么A>C'需要实物辅助。"
+      },
+
+      "instinct_profile": {
+        "description": "社会本能开始与生理本能平衡。同伴的认可变得极其重要。这是'社会规则从外部强制到内部认可的转折期'。",
+        "dominant_instincts": [
+          {"instinct": "归属感", "weight": 0.75, "reason": "同伴群体成为生活的中心——'他们怎么看我'变重要"},
+          {"instinct": "公平感", "weight": 0.65, "reason": "对公平有强烈且僵化的标准——'凭什么他可以'"},
+          {"instinct": "好奇心", "weight": 0.70, "reason": "仍然是强大的驱动力但开始被学校系统引导"},
+          {"instinct": "模式识别", "weight": 0.60, "reason": "学术学习的基础——开始系统性建立知识结构"},
+          {"instinct": "地位追求", "weight": 0.55, "reason": "开始在同伴中竞争——成绩/运动/人气"}
+        ],
+        "emerging_instincts": [
+          {"instinct": "自我一致", "weight": 0.35, "reason": "开始形成'我是谁'的概念"},
+          {"instinct": "互惠", "weight": 0.55, "reason": "复杂的友谊互惠——'你是我最好的朋友'"},
+          {"instinct": "风险规避", "weight": 0.35, "reason": "开始能评估风险但仍不完善"}
+        ],
+        "suppressed_instincts": [
+          {"instinct": "饥饿", "reason": "学会在学校定时进食而非随时吃"},
+          {"instinct": "排泄", "reason": "完全受社会规则控制(除特殊情况)"},
+          {"instinct": "性欲", "reason": "潜伏期——Freud认为此阶段性欲被压制(但有争议)"}
+        ]
+      },
+
+      "social_rule_internalization": {
+        "level": 0.50,
+        "description": "规则不再只是'大人说的'——开始理解规则的社会功能。'告状'(tattling)是此阶段的特征——儿童通过举报违规来确认规则的边界。"
+      },
+
+      "emotional_regulation": {
+        "level": 0.45,
+        "description": "显著进步。可以自己使用策略(转移注意力、重新解释)。但仍会因同伴排斥或学业失败而情绪崩溃。"
+      },
+
+      "dominant_instinct_weight_total": 0.40,
+      "social_modulation_coefficient": 0.45
+    },
+
+    "adolescence": {
+      "name": "青少年期",
+      "name_en": "Adolescence",
+      "age_range": [12, 18],
+      "piaget_stage": "形式运算期",
+      "erikson_stage": "身份 vs 角色混淆",
+      "kohlberg_level": "习俗水平——'法律和秩序'取向",
+
+      "cognitive_profile": {
+        "abstract_thinking": 0.75,
+        "causal_reasoning": 0.70,
+        "time_perception": "完整的过去-现在-未来时间线，但'未来自我'仍模糊",
+        "perspective_taking": 0.65,
+        "language_ability": "完全成熟，掌握抽象语言和反讽",
+        "memory_type": "完全成熟",
+        "executive_function": 0.60,
+        "key_feature": "形式运算——可以进行假设-演绎推理('如果A那会怎样')、反事实思维('如果我当时选了B')。但：边缘系统(情绪/奖赏)发育超前于前额叶(控制)≈2-3年——这就是青少年'知道但不能控制'的神经基础(Casey et al., 2008)。同伴在场时风险承担增加2-3倍(Chein et al., 2011)。"
+      },
+
+      "instinct_profile": {
+        "description": "本能与社会的关键博弈期。性欲觉醒(生理) + 身份追寻(精神) + 同伴压力(社会) + 前额叶未成熟(控制力不足) = 高风险行为高峰。",
+        "dominant_instincts": [
+          {"instinct": "归属感", "weight": 0.90, "reason": "极度在意同伴看法——被排斥是最大的恐惧"},
+          {"instinct": "地位追求", "weight": 0.80, "reason": "社交地位竞争白热化——受欢迎/被仰望"},
+          {"instinct": "性欲", "weight": 0.65, "reason": "青春期激素激增，性吸引首次成为显著驱动力"},
+          {"instinct": "自我一致", "weight": 0.70, "reason": "身份建构——'我是谁'成为核心问题"},
+          {"instinct": "好奇心", "weight": 0.65, "reason": "对成人世界的规则和边界进行测试"},
+          {"instinct": "意义追寻", "weight": 0.55, "reason": "首次追问人生的意义——常常表现为理想主义或愤世嫉俗"},
+          {"instinct": "风险规避", "weight": 0.20, "reason": "被抑制——同伴在场时风险判断显著下降(Chein et al., 2011)"}
+        ],
+        "conflict_pairs": [
+          {"pair": ["归属感", "自我一致"], "description": "想被群体接受 vs 想做自己——青春期核心冲突"},
+          {"pair": ["性欲", "风险规避"], "description": "性吸引 vs 安全——说明为什么青少年性行为常常不采取保护措施"},
+          {"pair": ["地位追求", "公平感"], "description": "想赢 vs 公平竞争——校园霸凌的部分根源"}
+        ]
+      },
+
+      "social_rule_internalization": {
+        "level": 0.60,
+        "description": "社会规则已被理解，但青少年开始'测试边界'和质疑规则(为什么要遵守？)。对虚伪(hypocrisy)高度敏感——成人说一套做一套是社会规则内化的最大障碍。同伴规范开始在某些领域超越社会/成人规范。"
+      },
+
+      "emotional_regulation": {
+        "level": 0.40,
+        "description": "前额叶未成熟 + 边缘系统高度活跃 = 情绪波动是常态而非例外。强烈的情绪体验(狂喜/绝望/愤怒)在一天内多次切换是正常的。但已具备基本的自我调节策略。"
+      },
+
+      "dominant_instinct_weight_total": 0.50,
+      "social_modulation_coefficient": 0.50,
+      "key_neuroscience": "Casey et al.(2008): 边缘系统在青春期早期(12-14岁)已成熟，前额叶到20岁+才完全成熟——存在2-3年的'发育鸿沟'"
+    },
+
+    "young_adult": {
+      "name": "青年期",
+      "name_en": "Young Adult",
+      "age_range": [18, 25],
+      "piaget_stage": "后形式运算(部分达到)",
+      "erikson_stage": "亲密 vs 孤立",
+      "kohlberg_level": "后习俗水平开始可能——'社会契约'取向",
+
+      "cognitive_profile": {
+        "abstract_thinking": 0.90,
+        "causal_reasoning": 0.80,
+        "time_perception": "完整的生命时间线，能合理规划5-10年跨度",
+        "perspective_taking": 0.80,
+        "language_ability": "完全成熟",
+        "memory_type": "完全成熟",
+        "executive_function": 0.75,
+        "key_feature": "前额叶继续成熟。Arnett(2000)提出'新兴成年期'(Emerging Adulthood)——18-25岁既不是青少年也不是完全成年人，是独特的生命阶段。核心任务：身份探索、不稳定性、自我关注、'夹在中间'的感觉、可能性/乐观主义。"
+      },
+
+      "instinct_profile": {
+        "description": "前额叶逐步上线，社会规则内化加深，但仍在训练中。'成年'的开关不是18岁生日——是渐进过程。",
+        "dominant_instincts": [
+          {"instinct": "归属感", "weight": 0.75, "reason": "建立长期伴侣关系/深层友谊网络"},
+          {"instinct": "意义追寻", "weight": 0.70, "reason": "'我的人生要用来做什么'——职业选择和人生方向的核心驱动力"},
+          {"instinct": "地位追求", "weight": 0.65, "reason": "职场竞争和社会认可的初期"},
+          {"instinct": "性欲", "weight": 0.55, "reason": "高峰期但开始受长期关系价值调制"},
+          {"instinct": "自我一致", "weight": 0.60, "reason": "身份继续巩固——'我想成为什么样的人'"},
+          {"instinct": "好奇心", "weight": 0.50, "reason": "探索世界和可能性——旅行、学习、尝试不同职业"}
+        ],
+        "regulated_instincts": [
+          {"instinct": "风险规避", "weight": 0.45, "reason": "前额叶成熟但仍有乐观偏差——'坏事不会发生在我身上'"}
+        ]
+      },
+
+      "social_rule_internalization": {
+        "level": 0.75,
+        "description": "社会规则大部分已内化。开始理解法律和规范的'精神'而非仅仅'字面'。但仍会在利益冲突时动摇——'我知道不该做，但...'"
+      },
+
+      "emotional_regulation": {
+        "level": 0.65,
+        "description": "显著改善。前额叶控制增强。情绪仍然强烈但能在大多数情境中调节。失恋/职业挫折仍然会触发强烈情绪反应。"
+      },
+
+      "dominant_instinct_weight_total": 0.30,
+      "social_modulation_coefficient": 0.70
+    },
+
+    "early_adulthood": {
+      "name": "成年早期",
+      "name_en": "Early Adulthood",
+      "age_range": [25, 40],
+      "piaget_stage": "后形式运算/实用主义思维",
+      "erikson_stage": "繁殖 vs 停滞",
+      "kohlberg_level": "后习俗水平——社会契约/普遍伦理原则(部分达到)",
+
+      "cognitive_profile": {
+        "abstract_thinking": 0.95,
+        "causal_reasoning": 0.85,
+        "time_perception": "完整的时间视角，能规划数十年",
+        "perspective_taking": 0.90,
+        "language_ability": "完全成熟",
+        "memory_type": "完全成熟，但开始有'我记得以前...'的怀旧",
+        "executive_function": 0.90,
+        "key_feature": "前额叶完全成熟(约25岁)。达到认知能力峰值——处理速度、工作记忆、流体智力在25-30岁达峰。实用主义思维——'什么有效'优先于'什么符合理论'。'专家直觉'开始形成——在专业领域中的快速模式识别。"
+      },
+
+      "instinct_profile": {
+        "description": "社会规则深度内化，本能被高效调制。'成熟'的本质=社会规则与本能之间的平衡达到最优点。本能的常态权重处于全生命周期最低水平。",
+        "dominant_instincts": [
+          {"instinct": "归属感", "weight": 0.65, "reason": "建立核心家庭和深层职业网络"},
+          {"instinct": "地位追求", "weight": 0.60, "reason": "职业晋升和物质积累"},
+          {"instinct": "护幼", "weight": 0.70, "reason": "如果有子女——育儿的全面投入期"},
+          {"instinct": "风险规避", "weight": 0.50, "reason": "有子女后显著增强（'为了孩子'）"},
+          {"instinct": "意义追寻", "weight": 0.45, "reason": "工作意义和生活平衡的追问"},
+          {"instinct": "互惠", "weight": 0.50, "reason": "职业网络和社会资本的积累"},
+          {"instinct": "自我一致", "weight": 0.55, "reason": "自我叙事趋于稳定——'这就是我'"}
+        ],
+        "suppressed_instincts": [
+          {"instinct": "好奇心", "weight": 0.25, "reason": "被日常责任压制——自由探索的时间减少"},
+          {"instinct": "性欲", "weight": 0.30, "reason": "被长期关系和责任深度调制"},
+          {"instinct": "恐惧", "weight": 0.08, "reason": "社会角色提供安全感——多数日常决策不受恐惧影响"}
+        ]
+      },
+
+      "social_rule_internalization": {
+        "level": 0.88,
+        "description": "社会规则被深度内化。遵守规则不是因为怕惩罚，而是因为认同规则的价值。可以在规则之间做精细的权衡。"
+      },
+
+      "emotional_regulation": {
+        "level": 0.85,
+        "description": "高度发达。可以对情绪进行元认知('我知道我现在很生气，我需要冷静')。但：育儿压力、职业挫折、婚姻冲突仍然挑战调节能力。"
+      },
+
+      "dominant_instinct_weight_total": 0.18,
+      "social_modulation_coefficient": 0.85
+    },
+
+    "middle_age": {
+      "name": "中年期",
+      "name_en": "Middle Age",
+      "age_range": [40, 60],
+      "piaget_stage": "后形式运算——辩证思维/智慧",
+      "erikson_stage": "繁殖 vs 停滞(关键危机期)",
+      "kohlberg_level": "后习俗水平(能稳定到达的最高水平)",
+
+      "cognitive_profile": {
+        "abstract_thinking": 0.95,
+        "causal_reasoning": 0.90,
+        "time_perception": "'剩余时间'视角开始取代'已过时间'视角——Carstensen(1999)社会情感选择理论的关键转换点",
+        "perspective_taking": 0.95,
+        "language_ability": "词汇量和语言智慧达峰",
+        "memory_type": "晶体智力(知识/经验)达峰，流体智力(处理速度/工作记忆)开始缓慢下降",
+        "executive_function": 0.85,
+        "key_feature": "社会情感选择理论(SST)：中年人开始从'未来导向'(知识获取/新社交)转向'现在导向'(情感满足/深度关系)。'中年危机'的本质：意义追寻和死亡意识开始从背景进入前景。生育窗口关闭(女性更年期)是生物学上的关键转折点。"
+      },
+
+      "instinct_profile": {
+        "description": "意义追寻和死亡意识首次成为重要驱动力。社会角色的重压达到顶峰(上有老下有小)。'中年危机'是多重本能冲突的结果。",
+        "dominant_instincts": [
+          {"instinct": "意义追寻", "weight": 0.70, "reason": "'我这一生到底在做什么'——中年危机的情感核心"},
+          {"instinct": "死亡意识", "weight": 0.45, "reason": "身体衰退+父母去世+子女离家→死亡的现实感增强"},
+          {"instinct": "归属感", "weight": 0.60, "reason": "关系质量>关系数量——'谁真正在乎我'"},
+          {"instinct": "地位追求", "weight": 0.55, "reason": "职业巅峰或停滞——'我达到了吗？还能更进一步吗？'"},
+          {"instinct": "自我一致", "weight": 0.65, "reason": "审视过去选择——'我走对路了吗？有没有错过的可能性？'"},
+          {"instinct": "护幼", "weight": 0.60, "reason": "如果子女仍在家——青春期/成年初期的子女带来新的育儿挑战"}
+        ],
+        "midlife_crisis_pattern": {
+          "description": "中年危机不是必然的，但当它发生时，本质是：意义追寻(0.70) + 死亡意识(0.45) + 自我一致(审视过去) + 风险规避下降(想要改变) → 可能导致剧烈的生活变化(离婚/辞职/大幅消费)",
+          "risk_factors": ["职业停滞", "婚姻不满", "父母去世", "身体健康下降", "子女离家的空巢感"],
+          "protective_factors": ["有意义的工作/爱好", "稳定的亲密关系", "对'生命的有限性'的接受"]
+        }
+      },
+
+      "social_rule_internalization": {
+        "level": 0.92,
+        "description": "社会规则完全内化但开始质疑——'我遵守了一辈子规则，得到了什么？'。中年人对规则的态度变得更加务实和辩证。"
+      },
+
+      "emotional_regulation": {
+        "level": 0.88,
+        "description": "高度稳定但有脆弱点——中年男性抑郁（常被忽视）、愤怒管理问题（'脾气越来越差'）、悲伤处理（丧亲增加）。"
+      },
+
+      "dominant_instinct_weight_total": 0.22,
+      "social_modulation_coefficient": 0.82
+    },
+
+    "late_adulthood": {
+      "name": "老年期",
+      "name_en": "Late Adulthood",
+      "age_range": [60, null],
+      "piaget_stage": "智慧(Wisdom)——超越形式运算",
+      "erikson_stage": "整合 vs 绝望",
+      "kohlberg_level": "后习俗水平——但可能回退到习俗水平(依赖简化规则)",
+
+      "cognitive_profile": {
+        "abstract_thinking": 0.80,
+        "causal_reasoning": 0.75,
+        "time_perception": "'剩余时间'视角主导——社会情感选择理论的核心：情感目标优先于知识目标",
+        "perspective_taking": 0.85,
+        "language_ability": "词汇量保持/增长，但词检索(word retrieval)速度下降",
+        "memory_type": "晶体智力保持，流体智力继续下降。情节记忆下降，语义记忆保持。",
+        "executive_function": 0.65,
+        "key_feature": "社会情感选择理论：老年人优先选择情感上令人满意的关系和体验——'不在乎知道更多，只在乎感觉更好'。对积极信息的记忆偏向(Positivity Effect)——老年人比年轻人更倾向于关注和记忆积极信息。这个'积极偏向'是时间视角转换的适应性变化——当剩余时间有限时，最大化当下的情感幸福是理性的。"
+      },
+
+      "instinct_profile": {
+        "description": "生理本能可能因健康问题重新升高权重。死亡意识进入前台。意义追寻关注点的转换——从'创造未来'转向'整合过去'(Erikson: 整合vs绝望)。",
+        "dominant_instincts": [
+          {"instinct": "意义追寻", "weight": 0.80, "reason": "生命回顾(life review)——整合一生的叙事，寻找连贯性——'我的一生有意义吗？'"},
+          {"instinct": "死亡意识", "weight": 0.70, "reason": "死亡的现实性越来越强——朋友配偶的去世、自身健康问题"},
+          {"instinct": "归属感", "weight": 0.75, "reason": "关系网络缩小但深度增加——'只有几个真正重要的人'"},
+          {"instinct": "自我一致", "weight": 0.70, "reason": "整合过去叙事——Erikson的'整合vs绝望'危机的核心"},
+          {"instinct": "风险规避", "weight": 0.60, "reason": "身体脆弱性增加导致更保守——'摔倒可不是小事'"},
+          {"instinct": "护幼", "weight": 0.50, "reason": "转变为对孙辈的关怀(祖母假说——人类女性更年期后的长寿命的进化解释)"}
+        ],
+        "declining_instincts": [
+          {"instinct": "地位追求", "weight": 0.20, "reason": "退休后社会地位竞争显著下降——'那些不再重要了'"},
+          {"instinct": "性欲", "weight": 0.15, "reason": "生理衰退但在健康老年人中仍存在"},
+          {"instinct": "好奇心", "weight": 0.25, "reason": "对新信息的主动寻求下降但并非消失——'我只关心我关心的'"}
+        ],
+        "positivity_effect": {
+          "description": "Carstensen的Positivity Effect: 老年人在注意力和记忆中偏向积极信息。这不是认知缺陷——而是适应性的目标转换(情感目标优先于信息目标)。在AI判定中，对老年人的事件响应预期应包含此效应。"
+        }
+      },
+
+      "social_rule_internalization": {
+        "level": 0.85,
+        "description": "社会规则已被完全内化。部分老年人可能回退到对规则的更简单使用——'规矩就是规矩'(可能与前额叶功能下降相关)。但多数老年人对规则有更深的理解和宽容。"
+      },
+
+      "emotional_regulation": {
+        "level": 0.90,
+        "description": "全生命周期最稳定——几十年的情绪调节经验。Negativity Bias(负面注意偏向)在老年人中减弱——他们更擅长'不被小事困扰'。但：丧偶/疾病/孤独仍然可以突破调节能力。"
+      },
+
+      "dominant_instinct_weight_total": 0.25,
+      "social_modulation_coefficient": 0.80,
+      "special_notes": "老年人在经历丧偶/重大疾病/社交孤立时，其社交调制系数可能急剧下降(0.80→0.50)，本能重新裸露——孤独的老人可能变得异常依赖或异常退缩。"
+    }
+  },
+
+  "same_event_different_ages": {
+    "description": "同一事件在不同年龄阶段的典型思维响应。这是AI判定引擎的验证核心。",
+
+    "event_criticism": {
+      "event": "被公开批评",
+      "description": "在工作/学校场合被权威人物公开批评",
+      "responses": {
+        "infant_toddler": {
+          "cognitive_processing": "不理解批评内容，但感知到负面情绪(愤怒的语气/表情)",
+          "emotional_response": "恐惧/哭泣——杏仁核直接反应",
+          "behavioral_response": "哭或退缩——没有'解释'或'道歉'的能力",
+          "instincts_activated": ["恐惧(0.85)", "归属感(0.90——依恋对象的不满触发分离焦虑)"],
+          "key": "不理解'为什么'，只感受到'不安全'"
+        },
+        "early_childhood": {
+          "cognitive_processing": "可能理解具体批评内容(你把玩具弄坏了)但不理解抽象批评(你不负责任)",
+          "emotional_response": "强烈的羞耻和恐惧——可能会大哭或发脾气",
+          "behavioral_response": "可能否认('不是我干的！')或退缩或大哭",
+          "instincts_activated": ["恐惧(0.65)", "自我保全(0.55)", "归属感(0.70——怕不被喜欢)"],
+          "key": "后果导向的自我判断('我打破了10个杯子比故意打破1个更坏')"
+        },
+        "middle_childhood": {
+          "cognitive_processing": "理解批评的内容和原因，但可能将批评过度内化",
+          "emotional_response": "羞耻、难堪——特别是在同伴面前被批评时",
+          "behavioral_response": "沉默/低头/可能哭泣——少数儿童会顶嘴但通常会后悔",
+          "instincts_activated": ["归属感(0.80——最大的恐惧是同伴的反应)", "自我保全(0.60)", "公平感(0.55——'这不公平！')"],
+          "key": "同伴在场的批评伤害最大——此时同伴评价的权重可能超过教师"
+        },
+        "adolescence": {
+          "cognitive_processing": "理解批评，并可能质疑批评本身的有效性——批评的元分析",
+          "emotional_response": "愤怒(外化)/羞耻(内化)——在两种反应之间快速切换",
+          "behavioral_response": "可能反驳/顶嘴(特别是如果认为批评不公平)或冷漠/翻白眼",
+          "instincts_activated": ["地位追求(0.80——公开批评是地位威胁)", "自我一致(0.70——批评挑战自我形象)", "归属感(0.80——同伴怎么看我？)", "公平感(0.65——批评是否公平?)"],
+          "key": "同伴在场会显著改变反应——私下批评vs公开批评的反应差异巨大"
+        },
+        "young_adult": {
+          "cognitive_processing": "全面理解批评，但可能过度反应(自我怀疑放大)",
+          "emotional_response": "焦虑和羞耻，但通常能在几小时内自我调节",
+          "behavioral_response": "表面接受(社交规范)，内心可能不认同；或过度道歉；少数人积极寻求改进方法",
+          "instincts_activated": ["地位追求(0.70)", "自我一致(0.65)", "归属感(0.55)"],
+          "key": "批评被作为职业/个人发展信息处理——但仍会感受到社交疼痛"
+        },
+        "early_adulthood": {
+          "cognitive_processing": "将批评作为信息处理——评估批评的有效性和来源动机",
+          "emotional_response": "轻微不适但通常不持续——除非涉及核心自我认同",
+          "behavioral_response": "礼貌接受，评估，选择性采纳——'这是关于我的有用信息吗？'",
+          "instincts_activated": ["自我一致(0.55)", "地位追求(0.45)", "自我保全(0.35)"],
+          "key": "成熟的处理模式——能区分'有用的批评'和'无用的攻击'"
+        },
+        "middle_age": {
+          "cognitive_processing": "通常能冷静处理，除非触及中年脆弱点(职业停滞/能力质疑)",
+          "emotional_response": "通常平静——除非批评触及'这一生白费了'的存在焦虑",
+          "behavioral_response": "与成年早期类似但更可能反思自身；或更防御(如果批评触及核心自我)",
+          "instincts_activated": ["意义追寻(0.60——如果批评引发存在焦虑)", "自我一致(0.65——如果批评挑战生命叙事)"],
+          "key": "中年人对批评的反应更两极化——触动核心问题或完全无关紧要"
+        },
+        "late_adulthood": {
+          "cognitive_processing": "可能以'积极偏向'处理——'他不了解我'或过度内化(如果已有认知下降)",
+          "emotional_response": "通常较平静——'到了这个年纪，有些事不重要了'",
+          "behavioral_response": "可能置之不理或过度沮丧——取决于自我整合程度(Erikson整合vs绝望)",
+          "instincts_activated": ["自我一致(0.70)", "归属感(0.65)"],
+          "key": "Erikson的'整合'个体能平和接受批评；'绝望'个体可能过度防御"
+        }
+      }
+    },
+
+    "event_loss": {
+      "event": "遭受丧失(失业/失恋/被拒绝)",
+      "description": "经历重大丧失或拒绝",
+      "responses": {
+        "infant_toddler": {
+          "cognitive_processing": "不理解'丧失'的概念——只感知到熟悉的人/物不在了",
+          "emotional_response": "分离痛苦(Panksepp的PANIC系统)——哭泣、寻找、绝望",
+          "behavioral_response": "寻找丢失的人/物，哭泣，依附在旁的人",
+          "instincts_activated": ["归属感(0.95——依恋断裂)", "恐惧(0.80——安全感丧失)"],
+          "key": "丧失=分离=生存威胁——婴幼儿不理解'会回来的'"
+        },
+        "adolescence": {
+          "cognitive_processing": "理解丧失——但过度感受其永久性('我再也找不到更好的人了')",
+          "emotional_response": "极端情绪波动——一天内经历悲伤/愤怒/否认/接受的所有阶段",
+          "behavioral_response": "可能戏剧化反应——社交媒体表达、沉迷于回忆；或完全否认自己有感受",
+          "instincts_activated": ["归属感(0.90)", "地位追求(0.80——如果被拒绝涉及地位)", "自我一致(0.75——这段关系/工作是我身份的核心)"],
+          "key": "前额叶不成熟+边缘系统高度活跃=丧失体验比任何其他年龄段都更强烈"
+        },
+        "early_adulthood": {
+          "cognitive_processing": "理解丧失是人生的一部分，但情感仍强烈",
+          "emotional_response": "明显的悲伤/愤怒/焦虑，但通常不极端——除非触及深层脆弱",
+          "behavioral_response": "允许自己悲伤，同时理性处理后续事宜",
+          "instincts_activated": ["归属感(0.75)", "地位追求(0.65——如果失业)", "意义追寻(0.60)", "自我一致(0.55)"],
+          "key": "恢复期通常数周到数月——正向心理资源越多恢复越快"
+        },
+        "late_adulthood": {
+          "cognitive_processing": "丧偶/丧失的累积效应——一次丧失可能触发对所有过去丧失的重新哀悼",
+          "emotional_response": "深刻的悲伤但表达可能克制——几十年的情绪调节经验",
+          "behavioral_response": "可能退缩或过度独立('我没事'——即使不是)；生命回顾重新激活",
+          "instincts_activated": ["意义追寻(0.85——重大丧失触发生命意义的重估)", "归属感(0.85)", "死亡意识(0.80)", "自我一致(0.70)"],
+          "key": "丧偶是老年人最大的心理危机——同时触发归属感、死亡意识和意义追寻"
+        }
+      }
+    },
+
+    "event_unfairness": {
+      "event": "遭遇不公平对待",
+      "responses": {
+        "early_childhood": {
+          "response": "'这不公平！'——强烈但短暂的抗议。对公平的理解是绝对的(每个人应该得到完全一样)。",
+          "instincts_activated": ["公平感(0.60)", "愤怒(0.55)"]
+        },
+        "middle_childhood": {
+          "response": "强烈关注过程和结果——'凭什么他可以我不可以'。规则的一致性比结果更重要。",
+          "instincts_activated": ["公平感(0.75)", "互惠(0.55)", "愤怒(0.60)", "归属感(0.70——如果别人得到了不公平的好处)"]
+        },
+        "adolescence": {
+          "response": "对不公平的敏感性达到顶峰——理想主义与现实碰撞的高峰期。可能引发全面的价值观反抗。",
+          "instincts_activated": ["公平感(0.85)", "愤怒(0.70)", "地位追求(0.60)", "意义追寻(0.55——'这个世界应该更好')"]
+        },
+        "early_adulthood": {
+          "response": "区分'需要对抗的不公平'和'不愉快但可接受的现实'。策略性选择战场。",
+          "instincts_activated": ["公平感(0.50)", "互惠(0.55)", "风险规避(0.45——'找老板投诉会丢工作吗？'"]
+        }
+      }
+    },
+
+    "event_mortality_reminder": {
+      "event": "被提醒死亡(看到事故/亲人去世/重大疾病)",
+      "responses": {
+        "early_childhood": {
+          "response": "不理解死亡的永久性——'他什么时候回来？'反复问同样的问题。可能认为死亡是可逆的或跟睡觉一样。",
+          "instincts_activated": ["恐惧(0.50——对分离的恐惧而非对死亡的理解)", "好奇心(0.60——反复追问)"]
+        },
+        "middle_childhood": {
+          "response": "开始理解死亡的生物学事实(约7-9岁)——死亡是不可逆的、普遍的、功能停止的。但认为死亡是'老人的事'。",
+          "instincts_activated": ["恐惧(0.55)", "好奇心(0.60)", "模式识别(0.50——为什么人必须死?)"]
+        },
+        "adolescence": {
+          "response": "理解死亡的虚无主义含义——'如果最终都要死，一切有什么意义？'。可能沉溺于死亡主题(音乐/文学/哲学)或完全否认(冒险行为)。",
+          "instincts_activated": ["意义追寻(0.75)", "死亡意识(0.70)", "恐惧(0.55)", "风险规避(0.15——反向形成: 通过冒险'证明'对死亡无畏)"]
+        },
+        "early_adulthood": {
+          "response": "认识到死亡的现实性但有效压制(TMT的近端防御)——'那还远着呢'。死亡提醒后短期内更重视亲密关系和工作意义。",
+          "instincts_activated": ["死亡意识(0.30)", "意义追寻(0.40)", "归属感(0.55——死亡提醒增强关系需求)"]
+        },
+        "middle_age": {
+          "response": "死亡从抽象概念变为个人现实。父母的去世是转折点——'下一个就是我了'。激发强烈的意义追寻和生命重估。",
+          "instincts_activated": ["死亡意识(0.65)", "意义追寻(0.80)", "自我一致(0.70——生命回顾)", "护幼(0.60——留下什么给子女?)"]
+        },
+        "late_adulthood": {
+          "response": "整合vs绝望的核心——对死亡的态度取决于生命回顾的结果。整合的个体：平和接受——'我准备好了'。绝望的个体：恐惧和回避。",
+          "instincts_activated": ["死亡意识(0.80)", "意义追寻(0.85)", "自我一致(0.75)", "归属感(0.70——希望最后时光与所爱之人在一起)"]
+        }
+      }
+    }
+  },
+
+  "instinct_trajectory_across_lifespan": {
+    "description": "每条核心本能在人生不同阶段的权重变化轨迹。这是事件判定引擎的动态权重基础。",
+    "trajectories": {
+      "归属感": {
+        "childhood": 0.75, "adolescence": 0.90, "young_adult": 0.75,
+        "early_adult": 0.65, "middle_age": 0.60, "late_adult": 0.75,
+        "pattern": "U型曲线——童年和老年最高，中年最低",
+        "explanation": "童年依赖他人→青少年极度需要同伴→中年人关系稳定→老年人关系网络缩小但深度增加"
+      },
+      "地位追求": {
+        "childhood": 0.20, "adolescence": 0.80, "young_adult": 0.65,
+        "early_adult": 0.60, "middle_age": 0.55, "late_adult": 0.20,
+        "pattern": "倒U型曲线——青少年和青年期达峰，老年骤降",
+        "explanation": "青少年的社交地位竞争→中年的职业竞争→退休后回落"
+      },
+      "意义追寻": {
+        "childhood": 0.00, "adolescence": 0.55, "young_adult": 0.70,
+        "early_adult": 0.45, "middle_age": 0.70, "late_adult": 0.80,
+        "pattern": "双峰——青年期和老年期最高",
+        "explanation": "青年:'我要用一生做什么?'→老年:'我的一生有意义吗?'"
+      },
+      "死亡意识": {
+        "childhood": 0.00, "adolescence": 0.60, "young_adult": 0.30,
+        "early_adult": 0.15, "middle_age": 0.45, "late_adult": 0.70,
+        "pattern": "青年期短暂高峰→被成年压制→中年逐步回升→老年达峰",
+        "explanation": "青少年首次面对死亡哲学→青年到成年早期有效否认→中年现实渗透→老年进入前台"
+      },
+      "好奇心": {
+        "childhood": 0.85, "adolescence": 0.65, "young_adult": 0.50,
+        "early_adult": 0.25, "middle_age": 0.25, "late_adult": 0.25,
+        "pattern": "持续下降",
+        "explanation": "童年一切皆新→被学校引导→成年被责任和时间压制"
+      },
+      "性欲": {
+        "childhood": 0.00, "adolescence": 0.65, "young_adult": 0.55,
+        "early_adult": 0.30, "middle_age": 0.25, "late_adult": 0.15,
+        "pattern": "青少年期达峰→持续下降",
+        "explanation": "青春期激素激增→被长期关系和社会责任调制→生理衰退"
+      },
+      "风险规避": {
+        "childhood": 0.10, "adolescence": 0.20, "young_adult": 0.45,
+        "early_adult": 0.50, "middle_age": 0.55, "late_adult": 0.60,
+        "pattern": "持续上升",
+        "explanation": "婴幼儿无危险认知→青少年冒险(前额叶未熟+同伴效应)→成年后持续上升→老年人身体脆弱性"
+      },
+      "共情": {
+        "childhood": 0.30, "adolescence": 0.50, "young_adult": 0.60,
+        "early_adult": 0.65, "middle_age": 0.70, "late_adult": 0.75,
+        "pattern": "持续上升",
+        "explanation": "3岁才开始发展→经验积累→老年达到顶峰(但认知共情可能下降)"
+      }
+    }
+  }
+}

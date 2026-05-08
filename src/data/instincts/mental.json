@@ -1,0 +1,773 @@
+{
+  "meta": {
+    "category": "mental",
+    "description": "精神本能——区别于动物的核心特征。表达更灵活、更依赖环境和文化调制。",
+    "version": "1.0",
+    "total_instincts": 18
+  },
+  "instincts": {
+    "curiosity": {
+      "name": "好奇心",
+      "name_en": "Curiosity",
+      "category": "cognitive",
+      "definition": "由信息缺口或新颖刺激触发的探索与求知驱动力",
+      "triggers": ["信息缺口", "新颖刺激", "矛盾信息", "中等不确定性"],
+      "goal_state": "填补信息缺口，获得认知闭合",
+      "intensity_spectrum": {
+        "mild": {"range": [0.1, 0.3], "description": "随意注意"},
+        "moderate": {"range": [0.3, 0.6], "description": "主动探索"},
+        "severe": {"range": [0.6, 0.85], "description": "沉迷钻研(心流)"},
+        "extreme": {"range": [0.85, 1.0], "description": "信息成瘾"}
+      },
+      "neural_basis": {
+        "brain_regions": ["伏隔核", "尾状核", "海马体", "前额叶"],
+        "neurotransmitters": ["多巴胺"],
+        "key_experiment": "Kang et al.(2009): 好奇心状态激活奖赏通路; Gruber et al.(2014): 好奇心增强海马体学习"
+      },
+      "behaviors": ["提问", "探索未知", "阅读", "实验", "冒险"],
+      "abnormal": {
+        "excess": "信息成瘾、过度冒险",
+        "deficit": "冷漠、抑郁相关的好奇心丧失"
+      },
+      "social_suppression": {
+        "mechanisms": ["教育将好奇心制度化(也扼杀)", "'好奇心害死猫'——社会禁忌压制", "宗教/政治压制'不该问的问题'", "互联网创造无限信息环境"],
+        "description": "好奇心在儿童中最强，随年龄被社会规则和责任稀释"
+      },
+      "exposure_conditions": ["强烈信息缺口", "新颖环境", "感知安全(探索的前提)"],
+      "relationships": {
+        "synergistic": [],
+        "inhibitory": [],
+        "conflict": ["风险规避本能"],
+        "modulated_by": ["恐惧本能"]
+      },
+      "cognitive_effects": {
+        "key_finding": "好奇心状态增强对所有接触信息的记忆(不限于目标信息)",
+        "zeigarnik_effect": "对未完成任务的记忆显著优于已完成任务"
+      },
+      "references": [
+        "Berlyne, D.E. (1954). A theory of human curiosity.",
+        "Loewenstein, G. (1994). The psychology of curiosity. Psychological Bulletin.",
+        "Kang, M.J. et al. (2009). Psychological Science.",
+        "Gruber, M.J. et al. (2014). Neuron."
+      ],
+      "weights": {"normal": 0.10, "exposed": 0.55}
+    },
+    "pattern_recognition": {
+      "name": "模式识别",
+      "name_en": "Pattern Recognition",
+      "category": "cognitive",
+      "definition": "在混沌感知中寻找秩序的深层认知驱动力。大脑本质是一台模式识别机器。",
+      "triggers": ["重复刺激", "时空共变", "结构性信息"],
+      "goal_state": "发现规律，建立预测模型",
+      "intensity_spectrum": {
+        "mild": {"range": [0, 0.2], "description": "潜在觉察"},
+        "moderate": {"range": [0.2, 0.5], "description": "有意识发现"},
+        "severe": {"range": [0.5, 0.8], "description": "系统性归纳"},
+        "extreme": {"range": [0.8, 1.0], "description": "过度泛化(假阳性)"}
+      },
+      "neural_basis": {
+        "brain_regions": ["视皮层", "基底节", "前额叶"],
+        "neurotransmitters": ["多巴胺(预测正确→微涨)"],
+        "key_experiment": "Skinner(1948): 鸽子迷信实验——随机投食后发展迷信动作"
+      },
+      "behaviors": ["归纳学习", "分类", "因果推断", "习惯形成"],
+      "abnormal": {
+        "excess": "模式幻觉(Apophenia)、阴谋论、迷信",
+        "deficit": "学习困难"
+      },
+      "social_suppression": {
+        "mechanisms": ["科学方法是'受控模式识别'——用统计区分真假模式", "教育训练正确模式抑制错误模式", "刻板印象是社会模式被标记为'不应使用'"],
+        "description": "每种文化定义哪些模式识别是'合理的'、哪些是'迷信的'"
+      },
+      "exposure_conditions": ["失控感(Whitson & Galinsky, 2008: 失控→虚假模式)", "不确定性", "威胁情境(宁可误报)"],
+      "relationships": {
+        "synergistic": ["因果推理本能"],
+        "conflict": [],
+        "modulated_by": ["恐惧本能(增强)"]
+      },
+      "cognitive_effects": {
+        "key_finding": "确认偏误——只看到符合已有模式的证据"
+      },
+      "references": [
+        "Friston, K. (2010). The free-energy principle. Nature Reviews Neuroscience.",
+        "Whitson, J.A. & Galinsky, A.D. (2008). Science.",
+        "Skinner, B.F. (1948). 'Superstition' in the pigeon."
+      ],
+      "weights": {"normal": 0.06, "exposed": 0.40}
+    },
+    "causal_reasoning": {
+      "name": "因果推理",
+      "name_en": "Causal Reasoning",
+      "category": "cognitive",
+      "definition": "寻求事件之间因果关系的认知驱动力。'为什么'是人类的默认追问。",
+      "triggers": ["时间连续事件", "意外事件", "需要解释的现象"],
+      "goal_state": "建立可靠因果模型，准确预测未来",
+      "intensity_spectrum": {
+        "mild": {"range": [0.1, 0.3], "description": "随意联想"},
+        "moderate": {"range": [0.3, 0.6], "description": "追问为什么"},
+        "severe": {"range": [0.6, 0.85], "description": "系统性归因"},
+        "extreme": {"range": [0.85, 1.0], "description": "因果执念/阴谋论"}
+      },
+      "neural_basis": {
+        "brain_regions": ["颞顶联合区", "前额叶"],
+        "neurotransmitters": ["多巴胺(因果预测误差)"],
+        "key_experiment": "Michotte(1963): 因果感知是自动的; Gopnik(2004): 儿童像'小科学家'"
+      },
+      "behaviors": ["追问原因", "设计实验", "归因行为", "构建心智模型"],
+      "abnormal": {
+        "excess": "过度归因、因果幻觉",
+        "deficit": "习得性无助(Seligman, 1972)"
+      },
+      "social_suppression": {
+        "mechanisms": ["科学训练'相关不等于因果'", "宗教提供终极因果解释", "媒体操控归因方向", "法律是最形式化的归因系统"],
+        "description": "社会引导因果推理方向而非压制因果推理本身"
+      },
+      "exposure_conditions": ["重大意外事件", "缺乏解释的现象", "结果与预期不符"],
+      "relationships": {
+        "synergistic": ["模式识别本能"],
+        "conflict": [],
+        "modulated_by": []
+      },
+      "cognitive_effects": {
+        "key_finding": "自我服务偏差(成功归因于自己/失败归因于环境); 基本归因错误"
+      },
+      "references": [
+        "Michotte, A. (1963). The Perception of Causality.",
+        "Gopnik, A. et al. (2004). Psychological Review.",
+        "Ross, L. (1977). Advances in Experimental Social Psychology."
+      ],
+      "weights": {"normal": 0.08, "exposed": 0.45}
+    },
+    "belongingness": {
+      "name": "归属感",
+      "name_en": "Belongingness",
+      "category": "social",
+      "definition": "与他人建立和维持积极持久关系的深层驱动力。社会排斥激活与物理疼痛相同的脑区。",
+      "triggers": ["孤独/孤立信号", "被排斥体验", "社交互动观察", "进入新环境"],
+      "goal_state": "被接纳、被需要、属于某个群体",
+      "intensity_spectrum": {
+        "mild": {"range": [0.1, 0.3], "description": "社交偏好"},
+        "moderate": {"range": [0.3, 0.6], "description": "主动寻求联结"},
+        "severe": {"range": [0.6, 0.85], "description": "孤独痛苦"},
+        "extreme": {"range": [0.85, 1.0], "description": "被排斥的极度痛苦"}
+      },
+      "neural_basis": {
+        "brain_regions": ["前扣带皮层(dACC)——物理疼痛和社会排斥共享", "催产素系统"],
+        "neurotransmitters": ["催产素", "内源性阿片"],
+        "key_experiment": "Eisenberger et al.(2003): Cyberball实验——社会排斥激活物理疼痛脑区; Asch(1951): 从众实验"
+      },
+      "behaviors": ["交友", "从众", "害怕被排斥", "加入群体"],
+      "abnormal": {
+        "excess": "过度依赖、失去自我边界",
+        "deficit": "反社会人格障碍中的冷漠"
+      },
+      "social_suppression": {
+        "mechanisms": ["归属本能是社会规范的支撑而非压制对象", "但'不合群'被高度污名化", "社交媒体同时满足和放大归属需求"],
+        "description": "归属本能是社会规则的基础，很少被压制"
+      },
+      "exposure_conditions": ["社交排斥", "孤独", "新环境", "危机时(痛苦喜欢陪伴)"],
+      "relationships": {
+        "synergistic": ["护幼本能", "共情"],
+        "conflict": ["地位追求(根本社会张力)"],
+        "modulated_by": []
+      },
+      "cognitive_effects": {
+        "key_finding": "被排斥增强攻击性; 孤独导致认知下降和健康恶化; 从众压力压倒个人判断"
+      },
+      "references": [
+        "Baumeister, R.F. & Leary, M.R. (1995). The need to belong. Psychological Bulletin.",
+        "Eisenberger, N.I. et al. (2003). Science.",
+        "Asch, S.E. (1951).",
+        "Putnam, R.D. (2000). Bowling Alone."
+      ],
+      "weights": {"normal": 0.18, "exposed": 0.82}
+    },
+    "status_seeking": {
+      "name": "地位追求",
+      "name_en": "Status Seeking",
+      "category": "social",
+      "definition": "在社会层级中获取和维持相对位置的驱动力。在人类中复杂化为财富、头衔、影响力等符号形式。",
+      "triggers": ["社会比较信号", "他人评价(特别是负面)", "竞争情境", "地位威胁"],
+      "goal_state": "获得/维持较高社会地位",
+      "intensity_spectrum": {
+        "mild": {"range": [0.1, 0.3], "description": "体面自我呈现"},
+        "moderate": {"range": [0.3, 0.6], "description": "主动竞争"},
+        "severe": {"range": [0.6, 0.85], "description": "地位焦虑"},
+        "extreme": {"range": [0.85, 1.0], "description": "对地位的痴迷"}
+      },
+      "neural_basis": {
+        "brain_regions": ["腹侧纹状体(地位奖赏)", "杏仁核(地位威胁)", "前额叶(地位策略)"],
+        "hormones": ["睾酮(胜利效应)", "血清素(地位稳定)"],
+        "key_experiment": "Marmot(2004): Whitehall研究——公务员级别越高越健康"
+      },
+      "behaviors": ["竞争", "炫耀成就/消费", "维护声誉", "社交比较"],
+      "abnormal": {
+        "excess": "自恋型人格障碍",
+        "deficit": "完全无竞争意愿"
+      },
+      "social_suppression": {
+        "mechanisms": ["禁止暴力竞争", "谦虚美德", "反炫耀规范", "将竞争引导到合法通道(学术/职业/体育)"],
+        "description": "社会规范同时压制和重塑地位追求——压制原始竞争，引导到制度通道"
+      },
+      "exposure_conditions": ["社会比较被激活", "公开地位威胁", "竞争环境", "社交媒体"],
+      "relationships": {
+        "synergistic": [],
+        "conflict": ["归属本能"],
+        "modulated_by": []
+      },
+      "cognitive_effects": {
+        "key_finding": "相对剥夺感——不是'有多少'而是'比周围人多还是少'; 地位焦虑占据大量自发思维"
+      },
+      "references": [
+        "Veblen, T. (1899). The Theory of the Leisure Class.",
+        "Marmot, M. (2004). The Status Syndrome.",
+        "Anderson, C. et al. (2015). Psychological Bulletin."
+      ],
+      "weights": {"normal": 0.12, "exposed": 0.70}
+    },
+    "reciprocity": {
+      "name": "互惠",
+      "name_en": "Reciprocity",
+      "category": "social",
+      "definition": "对善意回报善意、对恶意回报恶意的驱动力。合作进化的核心机制。",
+      "triggers": ["接受他人帮助/礼物", "遭受不公平对待/伤害"],
+      "goal_state": "恢复社会交换平衡",
+      "intensity_spectrum": {
+        "mild": {"range": [0.1, 0.3], "description": "礼貌性回馈"},
+        "moderate": {"range": [0.3, 0.6], "description": "义务性回报"},
+        "severe": {"range": [0.6, 0.85], "description": "执着公平追求"},
+        "extreme": {"range": [0.85, 1.0], "description": "以牙还牙不可控"}
+      },
+      "neural_basis": {
+        "brain_regions": ["尾状核(合作后被回报激活奖赏)", "前岛叶(不公平感知)", "背外侧前额叶(延迟互惠计算)"],
+        "neurotransmitters": ["催产素"],
+        "key_experiment": "de Quervain et al.(2004): 惩罚背叛者激活奖赏通路; Axelrod(1984): Tit-for-tat胜出"
+      },
+      "behaviors": ["感恩回报", "报复", "合作", "代价惩罚"],
+      "abnormal": {
+        "excess": "过度计较公平",
+        "deficit": "利用他人、从不回报"
+      },
+      "social_suppression": {
+        "mechanisms": ["法律禁止私力救济(压制负向互惠)", "感恩道德化(增强正向互惠)", "原谅——宗教对负向互惠的逆向压制", "市场交换是去人格化的互惠"],
+        "description": "社会压制'报复'方向，鼓励'回报'方向"
+      },
+      "exposure_conditions": ["被明显利用", "接受大恩惠", "被背叛"],
+      "relationships": {
+        "synergistic": ["公平感", "归属本能"],
+        "conflict": [],
+        "modulated_by": ["愤怒"]
+      },
+      "cognitive_effects": {
+        "key_finding": "惩罚不公行为本身是'愉悦的'——解释了代价惩罚"
+      },
+      "references": [
+        "Trivers, R.L. (1971). The evolution of reciprocal altruism.",
+        "Axelrod, R. (1984). The Evolution of Cooperation.",
+        "de Quervain, D.J.F. et al. (2004). Science."
+      ],
+      "weights": {"normal": 0.08, "exposed": 0.65}
+    },
+    "fairness": {
+      "name": "公平感",
+      "name_en": "Fairness",
+      "category": "social",
+      "definition": "对资源分配和对待方式是否公正的敏感性。幼儿中已出现，灵长类中也存在。",
+      "triggers": ["不平等资源分配", "不公平规则", "不公正对待"],
+      "goal_state": "恢复公平或惩罚不公平",
+      "intensity_spectrum": {
+        "mild": {"range": [0.1, 0.3], "description": "轻微不适"},
+        "moderate": {"range": [0.3, 0.6], "description": "口头反对"},
+        "severe": {"range": [0.6, 0.85], "description": "行动抵制"},
+        "extreme": {"range": [0.85, 1.0], "description": "宁愿自损也要惩罚不公"}
+      },
+      "neural_basis": {
+        "brain_regions": ["前岛叶", "前额叶", "杏仁核"],
+        "key_experiment": "Brosnan & de Waal(2003): 卷尾猴拒绝不平等报酬; Fehr & Schmidt(1999): 不公平厌恶模型"
+      },
+      "behaviors": ["抗议不公", "分享资源", "支持公平制度", "拒绝不公平交易"],
+      "abnormal": {
+        "excess": "对任何微小不公都过度反应",
+        "deficit": "对严重不公无动于衷"
+      },
+      "social_suppression": {
+        "mechanisms": ["公平感是社会规范的体现——法律围绕公平运作", "但'什么是公平'有不同定义(按劳vs按需vs机会vs结果)", "政治极化本质是不同公平模型的冲突"],
+        "description": "公平感是社会规范的直接来源，极少被压制"
+      },
+      "exposure_conditions": ["明显不公平对待", "自己/群体受不公", "观察到他人受不公(第三方公平感)"],
+      "relationships": {
+        "synergistic": ["互惠"],
+        "conflict": [],
+        "modulated_by": ["愤怒深度绑定"]
+      },
+      "cognitive_effects": {
+        "key_finding": "最后通牒游戏: 宁可不要钱也要拒绝不公平分配——压倒经济理性"
+      },
+      "references": [
+        "Brosnan, S.F. & de Waal, F.B.M. (2003). Nature.",
+        "Fehr, E. & Schmidt, K.M. (1999). Quarterly Journal of Economics.",
+        "Henrich, J. et al. (2001). American Economic Review."
+      ],
+      "weights": {"normal": 0.08, "exposed": 0.68}
+    },
+    "empathy": {
+      "name": "共情",
+      "name_en": "Empathy",
+      "category": "social",
+      "definition": "感知、理解并共享他人情感状态的多维能力。分为认知共情、情感共情、共情关怀。",
+      "triggers": ["观察他人情绪表达", "了解他人处境"],
+      "goal_state": "理解他人内心状态，共享感受，帮助他人",
+      "intensity_spectrum": {
+        "mild": {"range": [0.1, 0.3], "description": "注意到情绪"},
+        "moderate": {"range": [0.3, 0.6], "description": "理解感受"},
+        "severe": {"range": [0.6, 0.85], "description": "情感共鸣"},
+        "extreme": {"range": [0.85, 1.0], "description": "过度共情(共情疲劳)"}
+      },
+      "neural_basis": {
+        "brain_regions": ["镜像神经元系统", "前岛叶", "前扣带皮层", "颞顶联合区"],
+        "neurotransmitters": ["催产素"],
+        "key_experiment": "Singer et al.(2004): 观察伴侣被痛刺时自身疼痛脑区激活"
+      },
+      "behaviors": ["情绪传染", "视角转换", "安慰行为", "助人行为"],
+      "abnormal": {
+        "excess": "共情疲劳/倦怠",
+        "deficit": "精神病态(认知共情完好/情感共情缺失); 自闭症(情感共情可能完好/认知共情困难)"
+      },
+      "social_suppression": {
+        "mechanisms": ["共情被社会规范普遍鼓励", "但内外群体边界是社会构建的——宣传可关闭共情", "共情疲劳是现代社会的新问题(面对全球苦难)"],
+        "description": "共情是社会鼓励的本能，但可被人为关闭(去人性化)"
+      },
+      "exposure_conditions": ["面对他人明显痛苦", "亲近的人受伤害", "被引导关注他人感受"],
+      "relationships": {
+        "synergistic": ["归属本能", "公平感"],
+        "conflict": [],
+        "modulated_by": ["攻击本能(抑制)"]
+      },
+      "cognitive_effects": {
+        "key_finding": "共情不等同于道德——有时导致偏袒而非公正; 认知共情和情感共情可独立运作"
+      },
+      "references": [
+        "Singer, T. et al. (2004). Science.",
+        "Baron-Cohen, S. (2011). The Science of Evil.",
+        "de Waal, F. (2009). The Age of Empathy."
+      ],
+      "weights": {"normal": 0.10, "exposed": 0.72}
+    },
+    "self_preservation": {
+      "name": "自我保全",
+      "name_en": "Self-Preservation",
+      "category": "self",
+      "definition": "保护自我的物理和心理完整性不受损害的驱动力。包括物理安全和心理自我(自尊/形象/认同)。",
+      "triggers": ["对自我的物理威胁", "对自我的心理威胁(否定/羞辱/认同挑战)"],
+      "goal_state": "自我完整不受损害",
+      "intensity_spectrum": {
+        "mild": {"range": [0.1, 0.3], "description": "自我保护意识"},
+        "moderate": {"range": [0.3, 0.6], "description": "防御行为"},
+        "severe": {"range": [0.6, 0.85], "description": "激烈反击威胁"},
+        "extreme": {"range": [0.85, 1.0], "description": "为自保不惜一切"}
+      },
+      "neural_basis": {
+        "brain_regions": ["杏仁核(威胁检测)", "前额叶(自我表征)", "默认模式网络(自我反思)"],
+        "key_experiment": "Freud, A.(1936): 心理防御机制理论"
+      },
+      "behaviors": ["物理自卫", "维护自我形象", "对批评防御", "维护个人边界"],
+      "abnormal": {
+        "excess": "偏执型人格、不能接受任何批评",
+        "deficit": "自我毁灭行为"
+      },
+      "social_suppression": {
+        "mechanisms": ["谦虚规范压制自我维护", "'成熟'标准='接受批评不防御'", "社交媒体放大心理自我威胁"],
+        "description": "社会鼓励适度而非完全的自我保全"
+      },
+      "exposure_conditions": ["公开羞辱", "自尊受威胁", "自我认同被挑战"],
+      "relationships": {
+        "synergistic": ["战斗/逃跑本能"],
+        "conflict": ["归属本能"],
+        "modulated_by": []
+      },
+      "cognitive_effects": {
+        "key_finding": "自我服务偏差; 认知失调; 自我辩护"
+      },
+      "references": [
+        "Freud, A. (1936). The Ego and the Mechanisms of Defence.",
+        "Baumeister, R.F. (1998). The self."
+      ],
+      "weights": {"normal": 0.10, "exposed": 0.65}
+    },
+    "self_consistency": {
+      "name": "自我一致",
+      "name_en": "Self-Consistency",
+      "category": "self",
+      "definition": "维持自我概念、价值观和行为之间一致性的驱动力。认知失调理论的核心。",
+      "triggers": ["认知失调(行为与信念冲突)", "他人质疑自身一致性", "自相矛盾"],
+      "goal_state": "恢复自我概念一致性",
+      "intensity_spectrum": {
+        "mild": {"range": [0.1, 0.3], "description": "轻微不适"},
+        "moderate": {"range": [0.3, 0.6], "description": "主动解释/辩解"},
+        "severe": {"range": [0.6, 0.85], "description": "激烈维护自我叙事"},
+        "extreme": {"range": [0.85, 1.0], "description": "不可动摇的自我认同"}
+      },
+      "neural_basis": {
+        "brain_regions": ["前扣带皮层(冲突检测)", "前额叶(冲突解决)"],
+        "key_experiment": "Festinger & Carlsmith(1959): $1 vs $20认知失调实验"
+      },
+      "behaviors": ["合理化行为", "选择性接受信息", "改变信念适应行为", "维护自我叙事"],
+      "abnormal": {
+        "excess": "僵化自我认同",
+        "deficit": "身份混乱"
+      },
+      "social_suppression": {
+        "mechanisms": ["'诚信'是对自我一致的社会期望", "'伪君子'是违背的标签", "广告/政治利用认知失调(登门槛技术)", "'成长'是对自我一致的逆向叙事"],
+        "description": "社会鼓励言行一致但允许合理改变"
+      },
+      "exposure_conditions": ["公开言行不一致", "重要决策后", "核心信念被挑战"],
+      "relationships": {
+        "synergistic": ["模式识别", "自我保全"],
+        "conflict": [],
+        "modulated_by": []
+      },
+      "cognitive_effects": {
+        "key_finding": "确认偏误; 选择支持偏差; 认知失调引发生理唤起"
+      },
+      "references": [
+        "Festinger, L. (1957). A Theory of Cognitive Dissonance.",
+        "Festinger, L. & Carlsmith, J.M. (1959). Journal of Abnormal and Social Psychology."
+      ],
+      "weights": {"normal": 0.08, "exposed": 0.55}
+    },
+    "meaning_seeking": {
+      "name": "意义追寻",
+      "name_en": "Meaning Seeking",
+      "category": "self",
+      "definition": "在经历和存在中寻找目的、价值和意义。人类区别于动物最显著的特征之一。",
+      "triggers": ["重大人生事件(特别是负面的)", "单调/空虚感", "面对死亡/有限性", "存在的无意义感"],
+      "goal_state": "构建有意义叙事框架，赋予生命以目的",
+      "intensity_spectrum": {
+        "mild": {"range": [0.1, 0.3], "description": "日常为什么追问"},
+        "moderate": {"range": [0.3, 0.6], "description": "人生目标设定"},
+        "severe": {"range": [0.6, 0.85], "description": "存在性探寻"},
+        "extreme": {"range": [0.85, 1.0], "description": "存在主义危机"}
+      },
+      "neural_basis": {
+        "brain_regions": ["默认模式网络", "前额叶"],
+        "neurotransmitters": ["多巴胺(目标导向)"],
+        "key_experiment": "Frankl(1946): 集中营观察——有'理由活下去'的人最能幸存"
+      },
+      "behaviors": ["设定人生目标", "追求信仰/哲学", "创作", "讲述生命故事"],
+      "abnormal": {
+        "excess": "存在主义焦虑",
+        "deficit": "虚无主义、存在性空虚"
+      },
+      "social_suppression": {
+        "mechanisms": ["宗教提供预制意义系统", "消费主义将意义商品化", "现代世俗社会的'意义危机'", "政治极端主义提供'简单意义'"],
+        "description": "社会提供预制意义叙事以减少个体的存在焦虑"
+      },
+      "exposure_conditions": ["创伤/丧失", "人生转折", "中年危机", "面对死亡"],
+      "relationships": {
+        "synergistic": ["死亡意识"],
+        "conflict": [],
+        "modulated_by": []
+      },
+      "cognitive_effects": {
+        "key_finding": "'绝望 = 苦难 - 意义'(Frankl); 缺乏意义导致抑郁和成瘾; 赋予事件'意义'显著改变情感反应"
+      },
+      "references": [
+        "Frankl, V.E. (1946). Man's Search for Meaning.",
+        "Becker, E. (1973). The Denial of Death.",
+        "Deci, E.L. & Ryan, R.M. (2000). Self-determination theory."
+      ],
+      "weights": {"normal": 0.06, "exposed": 0.78}
+    },
+    "mortality_awareness": {
+      "name": "死亡意识",
+      "name_en": "Mortality Awareness",
+      "category": "self",
+      "definition": "对自身有限性的认知及由此产生的复杂心理反应。人类可能是唯一知道自己必然死亡的动物。",
+      "triggers": ["死亡提醒", "丧亲", "年龄增长信号", "疾病"],
+      "goal_state": "管理死亡焦虑(通过各种防御机制)",
+      "intensity_spectrum": {
+        "mild": {"range": [0.1, 0.3], "description": "模糊觉察"},
+        "moderate": {"range": [0.3, 0.6], "description": "有意识不安"},
+        "severe": {"range": [0.6, 0.85], "description": "死亡焦虑"},
+        "extreme": {"range": [0.85, 1.0], "description": "死亡恐惧/恐慌"}
+      },
+      "neural_basis": {
+        "brain_regions": ["杏仁核", "前额叶", "默认模式网络"],
+        "key_experiment": "TMT研究: 死亡提醒后法官判更重、对领导者需求增强"
+      },
+      "behaviors": ["回避死亡话题", "追求象征性不朽(作品/后代)", "文化世界观维护", "风险规避增强"],
+      "abnormal": {
+        "excess": "死亡恐惧症",
+        "deficit": "对生命价值无感(高风险行为)"
+      },
+      "social_suppression": {
+        "mechanisms": ["现代社会系统隐藏死亡(发生在医院非家中)", "宗教提供最有效死亡管理方案", "医学用'战胜死亡'叙事", "年轻人反向形成(极限运动)"],
+        "description": "现代社会系统性'否认'死亡——越发达的社会越不谈论死亡(Ariès, 1974)"
+      },
+      "exposure_conditions": ["直接面对死亡/丧亲", "重大疾病诊断", "年龄里程碑"],
+      "relationships": {
+        "synergistic": ["意义追寻", "护幼本能", "归属本能"],
+        "conflict": [],
+        "modulated_by": []
+      },
+      "cognitive_effects": {
+        "key_finding": "死亡提醒→增强文化世界观防御+自尊追求; 增强对强力领导的偏好"
+      },
+      "references": [
+        "Becker, E. (1973). The Denial of Death.",
+        "Greenberg, J. et al. (1997). Terror management theory.",
+        "Solomon, S. et al. (2015). The Worm at the Core."
+      ],
+      "weights": {"normal": 0.02, "exposed": 0.75}
+    },
+    "fear": {
+      "name": "恐惧",
+      "name_en": "Fear",
+      "category": "emotional",
+      "definition": "对感知到的威胁产生的紧急负面情绪。是战斗/逃跑本能的情感表达层。",
+      "triggers": ["威胁信号(物理/社会/不确定性)"],
+      "goal_state": "消除威胁，恢复安全",
+      "intensity_spectrum": {
+        "mild": {"range": [0.1, 0.3], "description": "不安"},
+        "moderate": {"range": [0.3, 0.6], "description": "焦虑"},
+        "severe": {"range": [0.6, 0.85], "description": "害怕"},
+        "extreme": {"range": [0.85, 1.0], "description": "恐慌"}
+      },
+      "neural_basis": {
+        "brain_regions": ["杏仁核", "交感神经系统", "HPA轴"],
+        "key_experiment": "LeDoux双通路模型(低通路12ms / 高通路40ms)"
+      },
+      "behaviors": ["战斗/逃跑/僵直/讨好", "回避", "过度警惕"],
+      "abnormal": {
+        "excess": "焦虑障碍、恐惧症、PTSD",
+        "deficit": "Urbach-Wiethe病(杏仁核钙化→无畏)"
+      },
+      "social_suppression": {
+        "mechanisms": ["'勇敢'文化推崇克服恐惧", "恐惧表达被污名化", "媒体利用恐惧(广告/政治)"],
+        "description": "恐惧作为情感本身无法压制，但表达被社会调制"
+      },
+      "exposure_conditions": ["感知威胁", "创伤触发的环境线索"],
+      "relationships": {
+        "synergistic": ["战斗/逃跑本能"],
+        "conflict": [],
+        "modulated_by": []
+      },
+      "cognitive_effects": {
+        "key_finding": "杏仁核劫持; 威胁偏向注意; 恐惧记忆难以消除"
+      },
+      "references": [
+        "LeDoux, J. (1996). The Emotional Brain.",
+        "Phelps, E.A. & LeDoux, J.E. (2005). Neuron."
+      ],
+      "weights": {"normal": 0.04, "exposed": 0.85}
+    },
+    "anger": {
+      "name": "愤怒",
+      "name_en": "Anger",
+      "category": "emotional",
+      "definition": "对感知到的不公、侵犯或阻碍产生的进攻性情绪。'战斗'反应的执行情绪。",
+      "triggers": ["目标受阻", "不公平对待", "边界被侵犯", "受到威胁"],
+      "goal_state": "消除障碍，恢复控制",
+      "intensity_spectrum": {
+        "mild": {"range": [0.1, 0.3], "description": "烦躁"},
+        "moderate": {"range": [0.3, 0.6], "description": "生气"},
+        "severe": {"range": [0.6, 0.85], "description": "愤怒"},
+        "extreme": {"range": [0.85, 1.0], "description": "暴怒"}
+      },
+      "neural_basis": {
+        "brain_regions": ["杏仁核-下丘脑通路", "前额叶(调节)"],
+        "hormones": ["睾酮"],
+        "key_experiment": "Averill(1982): 大多数人每天至少经历一次愤怒，但80%不导致攻击"
+      },
+      "behaviors": ["攻击", "边界宣告", "强硬立场", "调动能量"],
+      "abnormal": {
+        "excess": "间歇性爆发障碍",
+        "deficit": "被动、无法维护边界"
+      },
+      "social_suppression": {
+        "mechanisms": ["'控制愤怒'是所有社会的基本期望", "义愤被道德许可(对不公的愤怒)", "不同文化对愤怒表达容忍度不同", "社交媒体放大'道德愤怒'"],
+        "description": "社会控制愤怒表达但不否认愤怒的道德价值"
+      },
+      "exposure_conditions": ["感知不公", "被侵犯", "目标受阻", "积累的挫折"],
+      "relationships": {
+        "synergistic": ["公平感(最强绑定)"],
+        "conflict": [],
+        "modulated_by": ["恐惧(互为表里)"]
+      },
+      "cognitive_effects": {
+        "key_finding": "愤怒增强确定性判断(让人更'确定'自己是对的); 降低风险感知"
+      },
+      "references": [
+        "Averill, J.R. (1982). Anger and Aggression.",
+        "Tavris, C. (1989). Anger: The Misunderstood Emotion."
+      ],
+      "weights": {"normal": 0.03, "exposed": 0.78}
+    },
+    "joy": {
+      "name": "喜悦",
+      "name_en": "Joy",
+      "category": "emotional",
+      "definition": "对需求满足、目标达成或积极情境的情感奖赏反应。",
+      "triggers": ["需求满足", "目标达成", "社会联结", "美/和谐体验"],
+      "goal_state": "维持积极状态，强化有益行为",
+      "intensity_spectrum": {
+        "mild": {"range": [0.1, 0.3], "description": "愉快"},
+        "moderate": {"range": [0.3, 0.6], "description": "高兴"},
+        "severe": {"range": [0.6, 0.85], "description": "喜悦"},
+        "extreme": {"range": [0.85, 1.0], "description": "狂喜/躁狂"}
+      },
+      "neural_basis": {
+        "brain_regions": ["多巴胺奖赏通路(VTA→伏隔核→前额叶)"],
+        "neurotransmitters": ["多巴胺", "内源性阿片", "内源性大麻素"],
+        "key_experiment": "Fredrickson(2001): 拓展-建构理论"
+      },
+      "behaviors": ["笑", "分享", "继续奖赏行为", "社会亲近"],
+      "abnormal": {
+        "excess": "躁狂发作",
+        "deficit": "快感缺失(抑郁症核心症状)"
+      },
+      "social_suppression": {
+        "mechanisms": ["喜悦通常不被压制但被礼仪化('得意不忘形')", "幸灾乐祸被道德压制", "喜悦被商业化"],
+        "description": "喜悦的社会压制较轻微"
+      },
+      "exposure_conditions": ["达成重大目标", "积极社会互动", "美的体验"],
+      "relationships": {
+        "synergistic": [],
+        "conflict": [],
+        "modulated_by": []
+      },
+      "cognitive_effects": {
+        "key_finding": "积极情绪拓展思维-行动库(Broaden-and-Build); 增强创造力和问题解决"
+      },
+      "references": [
+        "Fredrickson, B.L. (2001). American Psychologist.",
+        "Panksepp, J. (1998). Affective Neuroscience. (PLAY系统)"
+      ],
+      "weights": {"normal": 0.05, "exposed": 0.60}
+    },
+    "sadness": {
+      "name": "悲伤",
+      "name_en": "Sadness",
+      "category": "emotional",
+      "definition": "对丧失或不可达目标的情感反应。具有社会信号功能——告诉他人'我需要帮助'。",
+      "triggers": ["丧失(人/物/地位/能力)", "目标失败", "分离"],
+      "goal_state": "保存能量，发出求助信号，促进认知重评",
+      "intensity_spectrum": {
+        "mild": {"range": [0.1, 0.3], "description": "失望"},
+        "moderate": {"range": [0.3, 0.6], "description": "难过"},
+        "severe": {"range": [0.6, 0.85], "description": "悲伤"},
+        "extreme": {"range": [0.85, 1.0], "description": "悲痛"}
+      },
+      "neural_basis": {
+        "brain_regions": ["前扣带皮层", "岛叶"],
+        "neurotransmitters": ["血清素"],
+        "key_experiment": "Panksepp分离呼叫实验——分离痛苦被阿片类抑制"
+      },
+      "behaviors": ["哭泣", "退缩", "求助", "减少活动", "沉思"],
+      "abnormal": {
+        "excess": "重性抑郁障碍",
+        "deficit": "无法正常哀悼"
+      },
+      "social_suppression": {
+        "mechanisms": ["悲伤表达的文化差异(公开哀悼 vs 坚强)", "特定'哀悼期'提供社会许可窗口", "丧亲悲伤被医学化(DSM)", "'男儿有泪不轻弹'"],
+        "description": "悲伤表达受严格的文化时间窗口限制"
+      },
+      "exposure_conditions": ["丧失/分离", "目标失败", "共情他人的丧失"],
+      "relationships": {
+        "synergistic": [],
+        "conflict": [],
+        "modulated_by": ["悲伤信号触发他人共情"]
+      },
+      "cognitive_effects": {
+        "key_finding": "悲伤促进更系统的信息处理(减少认知偏差); 悲伤记忆倾向于过度概括化"
+      },
+      "references": [
+        "Panksepp, J. (1998). Affective Neuroscience. (PANIC/GRIEF系统)",
+        "Bonanno, G.A. (2004). American Psychologist."
+      ],
+      "weights": {"normal": 0.02, "exposed": 0.72}
+    },
+    "disgust": {
+      "name": "厌恶",
+      "name_en": "Disgust",
+      "category": "emotional",
+      "definition": "对污染、疾病或道德违规的排斥性情绪。独特之处：同时作用于物理域和道德域。",
+      "triggers": ["腐烂食物", "体液", "不卫生条件", "道德违规"],
+      "goal_state": "远离污染源，保护纯净",
+      "intensity_spectrum": {
+        "mild": {"range": [0.1, 0.3], "description": "不喜欢"},
+        "moderate": {"range": [0.3, 0.6], "description": "反感"},
+        "severe": {"range": [0.6, 0.85], "description": "恶心"},
+        "extreme": {"range": [0.85, 1.0], "description": "极度厌恶"}
+      },
+      "neural_basis": {
+        "brain_regions": ["前岛叶(核心厌恶中枢)", "杏仁核"],
+        "key_experiment": "Rozin, Haidt & McCauley(2000): 厌恶从口排拒→道德厌恶的进化"
+      },
+      "behaviors": ["回避", "恶心反应", "清洁行为", "道德谴责"],
+      "abnormal": {
+        "excess": "洁癖、过度道德审判",
+        "deficit": "卫生不良、道德边界模糊"
+      },
+      "social_suppression": {
+        "mechanisms": ["'恶心'被文化塑造为道德工具", "厌恶被用于政治传播(去人性化)", "医学教育对厌恶对象'去敏感化'"],
+        "description": "厌恶是道德本能(圣洁/堕落)的情绪基础"
+      },
+      "exposure_conditions": ["物理污染", "道德违规(特别是性/背叛)", "外群体偏见触发"],
+      "relationships": {
+        "synergistic": [],
+        "conflict": [],
+        "modulated_by": []
+      },
+      "cognitive_effects": {
+        "key_finding": "厌恶时道德评判更严厉; 行为免疫系统——对陌生人的不信任"
+      },
+      "references": [
+        "Rozin, P., Haidt, J. & McCauley, C.R. (2000). Handbook of Emotions.",
+        "Schaller, M. & Park, J.H. (2011). Advances in Experimental Social Psychology."
+      ],
+      "weights": {"normal": 0.03, "exposed": 0.60}
+    },
+    "surprise": {
+      "name": "惊讶",
+      "name_en": "Surprise",
+      "category": "emotional",
+      "definition": "对意外或违反预期事件的定向反应。最短暂的基本情绪——功能是'中断当前程序'。",
+      "triggers": ["意外事件", "预期违反", "新颖刺激"],
+      "goal_state": "快速评估意外事件的性质(威胁?机会?)",
+      "intensity_spectrum": {
+        "mild": {"range": [0.1, 0.3], "description": "轻微意外"},
+        "moderate": {"range": [0.3, 0.6], "description": "惊讶"},
+        "severe": {"range": [0.6, 0.85], "description": "震惊"},
+        "extreme": {"range": [0.85, 1.0], "description": "极度震惊(短时僵直)"}
+      },
+      "neural_basis": {
+        "brain_regions": ["蓝斑-去甲肾上腺素系统", "杏仁核", "前扣带皮层"],
+        "key_experiment": "惊讶无'正向'或'负向'——只是中断信号，需要其他系统接管"
+      },
+      "behaviors": ["定向反应", "中断当前活动", "认知重评"],
+      "abnormal": {
+        "excess": "惊跳反射过度",
+        "deficit": "对重要变化无反应"
+      },
+      "social_suppression": {
+        "mechanisms": ["惊讶表达通常不被压制", "但'过度惊讶'在某些场合被视为失礼"],
+        "description": "社会压制极少"
+      },
+      "exposure_conditions": ["强烈意外事件"],
+      "relationships": {
+        "synergistic": ["好奇心", "恐惧/喜悦(快速转向)"],
+        "conflict": [],
+        "modulated_by": []
+      },
+      "cognitive_effects": {
+        "key_finding": "惊讶强制中断当前思维并重新分配注意力; 意外事件增强记忆编码"
+      },
+      "references": [
+        "Ekman, P. & Friesen, W.V. (1975). Unmasking the Face.",
+        "Meyer, W.U. et al. (1997). Attention and Emotion."
+      ],
+      "weights": {"normal": 0.01, "exposed": 0.30}
+    }
+  }
+}

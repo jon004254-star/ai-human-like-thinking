@@ -1,0 +1,230 @@
+{
+  "meta": {
+    "description": "验证场景集——用具体事件测试思维模型的准确性",
+    "version": "1.0",
+    "principle": "每条场景包含: 事件描述 + 被判定者画像 + 期望的本能激活模式 + 期望的行为预测"
+  },
+  "scenarios": [
+    {
+      "id": "S001",
+      "name": "饥饿法官的判决",
+      "description": "法官在午餐前 vs 午餐后对假释申请的判定差异",
+      "reference": "Danziger et al. (2011) PNAS - 餐前假释批准率接近0%，餐后约65%",
+      "person": {
+        "age": 50,
+        "health_status": "hungry",
+        "emotional_state": "neutral",
+        "social_context": "workplace"
+      },
+      "event": {
+        "event_type": "professional_decision",
+        "event_description": "审理假释申请——做出是否批准的决定",
+        "threat_level": 0.0,
+        "social_threat_level": 0.1,
+        "time_pressure": 0.3
+      },
+      "expected_instincts": {
+        "hunger": {"min_activation": 0.5, "state": "elevated"},
+        "risk_aversion": {"min_activation": 0.2}
+      },
+      "expected_behavior": "判决偏向保守/拒绝——饥饿导致风险规避和道德判断窄化",
+      "expected_emotion": "烦躁/不耐烦",
+      "notes": "此场景验证生理本能(饥饿)如何在看似理性的专业决策中产生系统性影响。对照条件: health_status改为'normal'，期望假释批准率升高。"
+    },
+    {
+      "id": "S002",
+      "name": "青少年被当众批评",
+      "description": "16岁学生在全班面前被老师严厉批评",
+      "person": {
+        "age": 16,
+        "health_status": "normal",
+        "emotional_state": "neutral",
+        "social_context": "classroom"
+      },
+      "event": {
+        "event_type": "social_threat",
+        "event_description": "在全班同学面前被老师严厉批评成绩下降",
+        "threat_level": 0.0,
+        "social_threat_level": 0.75,
+        "social_visibility": 0.95,
+        "anonymity": 0.0
+      },
+      "expected_instincts": {
+        "status_seeking": {"min_activation": 0.6, "state": "exposed"},
+        "belongingness": {"min_activation": 0.6, "state": "exposed"},
+        "self_consistency": {"min_activation": 0.4},
+        "anger": {"min_activation": 0.4}
+      },
+      "expected_behavior": "可能反驳顶嘴（外化愤怒）或沉默退缩（内化羞耻）——同伴在场显著放大反应",
+      "expected_emotion": "愤怒+羞耻+恐惧的快速交替",
+      "notes": "此场景验证: (1) 青少年同伴在场效应; (2) 社会威胁→地位追求+归属感+自我一致的同时激活; (3) 前额叶未成熟导致的情绪调节能力不足。"
+    },
+    {
+      "id": "S003",
+      "name": "中年人面对裁员通知",
+      "description": "45岁中层管理者接到裁员通知",
+      "person": {
+        "age": 45,
+        "health_status": "normal",
+        "emotional_state": "neutral",
+        "social_context": "workplace"
+      },
+      "event": {
+        "event_type": "loss",
+        "event_description": "被公司通知裁员——失去工作了15年的职位",
+        "threat_level": 0.05,
+        "social_threat_level": 0.70,
+        "resource_scarcity": 0.6,
+        "time_pressure": 0.4
+      },
+      "expected_instincts": {
+        "status_seeking": {"min_activation": 0.6},
+        "meaning_seeking": {"min_activation": 0.6},
+        "self_consistency": {"min_activation": 0.55},
+        "mortality_awareness": {"min_activation": 0.3},
+        "belongingness": {"min_activation": 0.4}
+      },
+      "expected_behavior": "表层冷静（社会规则）但内心存在焦虑激增。可能触发'中年危机'模式——意义追寻+死亡意识+自我一致同时激活",
+      "expected_emotion": "焦虑+愤怒+空虚",
+      "notes": "此场景验证中年期的核心特征: 丧失事件不只触发地位威胁，还触发生命意义重估。"
+    },
+    {
+      "id": "S004",
+      "name": "老年人面对丧偶",
+      "description": "72岁女性丧偶后三个月",
+      "person": {
+        "age": 72,
+        "health_status": "normal",
+        "emotional_state": "sad",
+        "social_context": "alone",
+        "recent_events": ["丧偶(3个月前)"]
+      },
+      "event": {
+        "event_type": "daily_life",
+        "event_description": "在空房子里独自度过周末",
+        "threat_level": 0.0,
+        "social_threat_level": 0.3,
+        "social_visibility": 0.1,
+        "anonymity": 0.0
+      },
+      "expected_instincts": {
+        "belongingness": {"min_activation": 0.6, "state": "exposed"},
+        "meaning_seeking": {"min_activation": 0.65},
+        "death_awareness": {"min_activation": 0.55},
+        "self_consistency": {"min_activation": 0.55},
+        "sadness": {"min_activation": 0.6}
+      },
+      "expected_behavior": "生命回顾(整合过去)或过度退缩——取决于Erikson的'整合vs绝望'状态。通过共情触发他人帮助信号。",
+      "expected_emotion": "悲伤+孤独+偶尔的平和(如果是'整合'状态)",
+      "notes": "此场景验证: (1) 老年期丧失→多重本能同时激活; (2) 社会情感选择理论——老年人优先深度情感体验; (3) Positivity Effect——可能看到积极一面(对一生关系的感激)"
+    },
+    {
+      "id": "S005",
+      "name": "成人在匿名网络环境中",
+      "description": "30岁成年人在匿名社交平台(无实名)遇到对立观点",
+      "person": {
+        "age": 30,
+        "health_status": "normal",
+        "emotional_state": "neutral",
+        "social_context": "online"
+      },
+      "event": {
+        "event_type": "social_conflict",
+        "event_description": "在匿名平台上看到与自己价值观严重冲突的观点",
+        "threat_level": 0.0,
+        "social_threat_level": 0.3,
+        "anonymity": 0.9,
+        "social_visibility": 0.1
+      },
+      "expected_instincts": {
+        "anger": {"min_activation": 0.35},
+        "self_consistency": {"min_activation": 0.3},
+        "fight_or_flight": {"min_activation": 0.15}
+      },
+      "expected_behavior": "高匿名度+低社会调制→更可能发表攻击性言论(在线去抑制效应)。但在成年早期，前额叶成熟+社会规则内化，比青少年更可能克制。",
+      "expected_emotion": "愤怒+鄙视(道德厌恶)",
+      "notes": "此场景验证: (1) 去个体化效应——匿名降低社会调制系数; (2) 成年期的自我调节能力高于青少年期; (3) 对比: 如果年龄改为16岁，期望 anger 升高、self_consistency 降低(青少年的反应更情绪化)"
+    },
+    {
+      "id": "S006",
+      "name": "儿童第一次面对死亡",
+      "description": "5岁儿童的宠物狗死亡",
+      "person": {
+        "age": 5,
+        "health_status": "normal",
+        "emotional_state": "sad",
+        "social_context": "family"
+      },
+      "event": {
+        "event_type": "loss",
+        "event_description": "心爱的宠物狗去世了",
+        "threat_level": 0.0,
+        "social_threat_level": 0.1
+      },
+      "expected_instincts": {
+        "sadness": {"min_activation": 0.5},
+        "belongingness": {"min_activation": 0.7},
+        "curiosity": {"min_activation": 0.5},
+        "fear": {"min_activation": 0.3}
+      },
+      "expected_behavior": "反复问'它去哪了？什么时候回来？'——不理解死亡的永久性。可能看起来'很快忘了'(儿童的情绪恢复速度快)但在无意识层面有深刻影响。",
+      "expected_emotion": "悲伤+困惑(不理解死亡)",
+      "notes": "此场景验证: (1) 前运算期儿童不理解死亡不可逆; (2) 归属感(依恋对象消失)是主要驱动力而非死亡意识; (3) 好奇心驱动追问"
+    },
+    {
+      "id": "S007",
+      "name": "极度睡眠不足的急诊医生",
+      "description": "连续值班28小时的急诊医生面对危重病人",
+      "person": {
+        "age": 35,
+        "health_status": "sleep_deprived",
+        "emotional_state": "neutral",
+        "social_context": "workplace"
+      },
+      "event": {
+        "event_type": "professional_critical",
+        "event_description": "危重病人需要快速做出治疗方案决策",
+        "threat_level": 0.1,
+        "social_threat_level": 0.2,
+        "time_pressure": 0.9
+      },
+      "expected_instincts": {
+        "sleep": {"min_activation": 0.7, "state": "exposed"},
+        "risk_aversion": {"min_activation": 0.3}
+      },
+      "expected_behavior": "倾向于更保守/更简单的方案(认知资源不足→避免复杂决策)。可能更易怒(杏仁核-前额叶连接削弱)。可能做出非最优但'安全的'决策。",
+      "expected_emotion": "烦躁/麻木/认知疲劳",
+      "notes": "此场景验证: (1) 生理本能(睡眠剥夺)如何通过认知损害影响专业决策; (2) 专业训练(社会规则内化)部分对抗本能但无法完全抵消; (3) 参考: 睡眠不足时错误率显著上升"
+    },
+    {
+      "id": "S008",
+      "name": "资源稀缺中的群体决策",
+      "description": "灾难情境中有限水资源在陌生人群中的分配",
+      "person": {
+        "age": 35,
+        "health_status": "thirsty",
+        "emotional_state": "fearful",
+        "social_context": "strangers"
+      },
+      "event": {
+        "event_type": "crisis",
+        "event_description": "地震后被困，饮用水只够5个人中的3人",
+        "threat_level": 0.7,
+        "social_threat_level": 0.5,
+        "resource_scarcity": 0.95,
+        "time_pressure": 0.8
+      },
+      "expected_instincts": {
+        "thirst": {"min_activation": 0.7, "state": "exposed"},
+        "fight_or_flight": {"min_activation": 0.7, "state": "exposed"},
+        "fairness": {"min_activation": 0.5},
+        "reciprocity": {"min_activation": 0.4},
+        "belongingness": {"min_activation": 0.5},
+        "territoriality": {"min_activation": 0.4}
+      },
+      "expected_behavior": "本能与社会规则剧烈冲突——渴望(生存)→抢水(本能) vs 公平分配(社会规则)。结果取决于: 群体是否已有信任(归属感)、是否有领导者(地位)、对'公平'的定义能否达成共识。",
+      "expected_emotion": "恐惧+焦虑+愤怒(如果有分配冲突)",
+      "notes": "此场景验证: (1) 极端情境下本能裸露——生理本能权重急剧上升; (2) 社会规则在生存威胁前可能崩溃; (3) 群体的社会本能(公平/互惠/归属)是否足以对抗生理本能是核心问题"
+    }
+  ]
+}

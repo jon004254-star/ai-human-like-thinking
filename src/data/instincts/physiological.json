@@ -1,0 +1,640 @@
+{
+  "meta": {
+    "category": "physiological",
+    "description": "生理本能——所有人类行为的最底层驱动力。在成年人日常行为中被社会规则深度压制。",
+    "version": "1.0",
+    "total_instincts": 12
+  },
+  "instincts": {
+    "hunger": {
+      "name": "饥饿",
+      "name_en": "Hunger",
+      "category": "survival",
+      "definition": "由能量缺乏触发的觅食与进食驱动力",
+      "triggers": ["血糖下降", "胃饥饿素分泌", "食物线索暴露", "进食时间预期"],
+      "goal_state": "摄入足够能量，恢复能量平衡",
+      "intensity_spectrum": {
+        "mild": {"range": [0.1, 0.3], "description": "轻微胃空感，可忽略"},
+        "moderate": {"range": [0.3, 0.6], "description": "注意力分散，对食物敏感"},
+        "severe": {"range": [0.6, 0.85], "description": "无法思考其他事，烦躁"},
+        "extreme": {"range": [0.85, 1.0], "description": "道德判断扭曲，饥荒状态"}
+      },
+      "neural_basis": {
+        "brain_regions": ["下丘脑弓状核", "伏隔核"],
+        "hormones": ["胃饥饿素", "瘦素", "胰岛素"],
+        "neurotransmitters": ["NPY", "AgRP", "POMC", "多巴胺"],
+        "key_experiment": "Ancel Keys明尼苏达饥饿实验(1944-45)"
+      },
+      "behaviors": ["觅食", "进食", "囤积食物", "食物线索高度敏感"],
+      "abnormal": {
+        "excess": "暴食症、食物成瘾",
+        "deficit": "厌食症、饥饿感知丧失"
+      },
+      "social_suppression": {
+        "mechanisms": ["社会时钟决定进食时间", "饮食礼仪压制直接进食冲动", "审美标准压制饥饿信号", "宗教斋戒以精神规则超越饥饿"],
+        "limit_hours": 16,
+        "description": "一般成年人可舒适延迟进食4-6小时，超过12-16小时后社会压制开始失效"
+      },
+      "exposure_conditions": ["超过16小时未进食", "长期食物短缺", "酒精降低前额叶抑制", "情绪应激"],
+      "relationships": {
+        "synergistic": [],
+        "inhibitory": ["睡眠本能"],
+        "conflict": ["安全本能"],
+        "modulated_by": ["归属本能"]
+      },
+      "cognitive_effects": {
+        "attention": "偏向食物相关刺激",
+        "decision_making": "延迟满足能力下降",
+        "risk_preference": "为食物更愿冒险",
+        "moral_judgment": "对偷食物更宽容",
+        "key_finding": "Danziger et al.(2011): 法官假释批准率餐后65%，餐前接近0%"
+      },
+      "references": [
+        "Keys, A. et al. (1950). The Biology of Human Starvation.",
+        "Friedman, J.M. & Halaas, J.L. (1998). Leptin and the regulation of body weight. Nature.",
+        "Danziger, S. et al. (2011). Extraneous factors in judicial decisions. PNAS."
+      ],
+      "weights": {
+        "normal": 0.05,
+        "exposed": 0.92
+      }
+    },
+    "thirst": {
+      "name": "渴",
+      "name_en": "Thirst",
+      "category": "survival",
+      "definition": "由体液渗透压升高或血容量减少触发的饮水驱动力",
+      "triggers": ["血浆渗透压升高", "血容量减少", "口腔干燥"],
+      "goal_state": "补充水分，恢复体液平衡",
+      "intensity_spectrum": {
+        "mild": {"range": [0.1, 0.3], "description": "口干，舒适饮水"},
+        "moderate": {"range": [0.3, 0.6], "description": "持续想喝，认知轻微下降"},
+        "severe": {"range": [0.6, 0.85], "description": "显著认知受损，头痛烦躁"},
+        "extreme": {"range": [0.85, 1.0], "description": "混乱，器官风险"}
+      },
+      "neural_basis": {
+        "brain_regions": ["下丘脑室旁核", "视上核", "终板血管器"],
+        "hormones": ["抗利尿激素", "血管紧张素II"],
+        "neurotransmitters": [],
+        "key_experiment": "Zimmerman et al.(2016): 渴神经元在饮水前就预测体液恢复"
+      },
+      "behaviors": ["寻找水源", "饮水", "对液体线索敏感"],
+      "abnormal": {
+        "excess": "烦渴症",
+        "deficit": "脱水风险"
+      },
+      "social_suppression": {
+        "mechanisms": ["饮水几乎无社会规范约束——最少被压制的本能", "但获取水源途径受限"],
+        "limit_hours": 4,
+        "description": "一般成年人只能舒适不喝水2-4小时"
+      },
+      "exposure_conditions": ["超过4小时未饮水", "高温环境", "剧烈运动后"],
+      "relationships": {
+        "synergistic": ["饥饿本能"],
+        "inhibitory": [],
+        "conflict": [],
+        "modulated_by": []
+      },
+      "cognitive_effects": {
+        "attention": "轻度脱水即影响注意力",
+        "decision_making": "短期记忆受损",
+        "risk_preference": "不变",
+        "moral_judgment": "基本不变",
+        "key_finding": "Armstrong et al.(2012): 1-2%脱水即可影响情绪和认知"
+      },
+      "references": [
+        "Fitzsimons, J.T. (1998). Angiotensin, thirst, and sodium appetite.",
+        "Armstrong, L.E. et al. (2012). Mild dehydration affects mood. Journal of Nutrition."
+      ],
+      "weights": {
+        "normal": 0.03,
+        "exposed": 0.88
+      }
+    },
+    "sleep": {
+      "name": "睡眠",
+      "name_en": "Sleep",
+      "category": "survival",
+      "definition": "由昼夜节律和睡眠压力(腺苷积累)双重调控的周期性休息驱动力",
+      "triggers": ["腺苷积累", "褪黑素分泌", "昼夜节律信号"],
+      "goal_state": "进入睡眠，完成神经修复和记忆巩固",
+      "intensity_spectrum": {
+        "mild": {"range": [0.1, 0.3], "description": "困倦，反应速度下降"},
+        "moderate": {"range": [0.3, 0.6], "description": "微睡眠发作，判断力下降"},
+        "severe": {"range": [0.6, 0.85], "description": "相当于血液酒精0.10%的认知损害"},
+        "extreme": {"range": [0.85, 1.0], "description": "幻觉风险，前额叶几乎离线"}
+      },
+      "neural_basis": {
+        "brain_regions": ["视交叉上核", "腹外侧视前区", "基底前脑", "脑干"],
+        "hormones": ["褪黑素"],
+        "neurotransmitters": ["腺苷", "GABA", "食欲素"],
+        "key_experiment": "Dement(1960): REM睡眠剥夺实验; Walker(2017): 系统性综述"
+      },
+      "behaviors": ["寻找安全休息场所", "闭眼", "躺下", "进入睡眠"],
+      "abnormal": {
+        "excess": "嗜睡症",
+        "deficit": "失眠、睡眠剥夺精神症状"
+      },
+      "social_suppression": {
+        "mechanisms": ["996文化/deadline压制生物钟", "咖啡因——全球每日20亿杯", "闹钟制造'社会时差'", "蓝光扰乱褪黑素分泌"],
+        "limit_hours": 48,
+        "description": "可短期对抗但不可长期消除。超过48小时不睡出现强制微睡眠。"
+      },
+      "exposure_conditions": ["超过24小时未睡", "长期睡眠债务", "昼夜节律紊乱", "温暖/饱食后"],
+      "relationships": {
+        "synergistic": [],
+        "inhibitory": ["饥饿感知(胃饥饿素升高)"],
+        "conflict": [],
+        "modulated_by": ["杏仁核-前额叶连接削弱导致易怒"]
+      },
+      "cognitive_effects": {
+        "attention": "严重下降",
+        "decision_making": "功利化道德判断增加",
+        "risk_preference": "风险感知降低",
+        "moral_judgment": "Killgore et al.(2007): 更功利化",
+        "key_finding": "Yoo et al.(2007): 杏仁核对负面情绪反应增强60%"
+      },
+      "references": [
+        "Walker, M. (2017). Why We Sleep.",
+        "Yoo, S.S. et al. (2007). Nature Neuroscience.",
+        "Wittmann, M. et al. (2006). Social jetlag. Chronobiology International."
+      ],
+      "weights": {
+        "normal": 0.08,
+        "exposed": 0.85
+      }
+    },
+    "breathing": {
+      "name": "呼吸",
+      "name_en": "Breathing",
+      "category": "survival",
+      "definition": "维持氧气-二氧化碳平衡的自主/半自主驱动力。唯一既可自动运行又可被意识短暂控制的本能。",
+      "triggers": ["血氧下降", "二氧化碳升高"],
+      "goal_state": "维持正常血氧饱和度",
+      "intensity_spectrum": {
+        "mild": {"range": [0, 0.1], "description": "无意识自主呼吸"},
+        "moderate": {"range": [0.1, 0.5], "description": "呼吸困难，有意识关注"},
+        "severe": {"range": [0.5, 0.8], "description": "显著不适，焦虑"},
+        "extreme": {"range": [0.8, 1.0], "description": "窒息——压倒一切其他本能"}
+      },
+      "neural_basis": {
+        "brain_regions": ["延髓preBötzinger复合体", "脑桥呼吸调节中枢"],
+        "hormones": [],
+        "neurotransmitters": [],
+        "key_experiment": "Feldman & Del Negro(2006): 呼吸节律起搏器发现"
+      },
+      "behaviors": ["自主呼吸", "憋气后强制吸气", "窒息时剧烈挣扎"],
+      "abnormal": {
+        "excess": "过度换气综合征",
+        "deficit": "睡眠呼吸暂停"
+      },
+      "social_suppression": {
+        "mechanisms": ["几乎无社会压制——呼吸不被礼仪约束", "唯一例外: 瑜伽/冥想的呼吸调控"],
+        "limit_hours": 0,
+        "description": "呼吸的社会压制几乎为零——这是唯一一个100%不受社会规则调制的本能"
+      },
+      "exposure_conditions": ["窒息", "哮喘发作", "惊恐发作(虚假窒息信号)"],
+      "relationships": {
+        "synergistic": ["恐惧本能"],
+        "inhibitory": [],
+        "conflict": [],
+        "modulated_by": []
+      },
+      "cognitive_effects": {
+        "attention": "呼吸受阻时思维完全被求生占据",
+        "decision_making": "无暇顾及任何其他因素",
+        "risk_preference": "不适用",
+        "moral_judgment": "完全暂停",
+        "key_finding": "Zelano et al.(2016): 鼻呼吸增强恐惧检测和记忆编码"
+      },
+      "references": [
+        "Feldman, J.L. & Del Negro, C.A. (2006). Nature Reviews Neuroscience.",
+        "Klein, D.F. (1993). False suffocation alarms. Archives of General Psychiatry."
+      ],
+      "weights": {
+        "normal": 0.01,
+        "exposed": 1.0
+      }
+    },
+    "thermoregulation": {
+      "name": "体温调节",
+      "name_en": "Thermoregulation",
+      "category": "survival",
+      "definition": "维持核心体温在36.5-37.5°C的驱动力",
+      "triggers": ["皮肤温度感受器信号", "核心温度偏离设定点"],
+      "goal_state": "恢复热平衡",
+      "intensity_spectrum": {
+        "mild": {"range": [0.1, 0.3], "description": "轻微不适，加减衣物"},
+        "moderate": {"range": [0.3, 0.6], "description": "发抖/出汗"},
+        "severe": {"range": [0.6, 0.85], "description": "显著不适，行为完全围绕温度"},
+        "extreme": {"range": [0.85, 1.0], "description": "失温/中暑——威胁生命"}
+      },
+      "neural_basis": {
+        "brain_regions": ["下丘脑视前区"],
+        "hormones": [],
+        "neurotransmitters": [],
+        "key_experiment": "Williams & Bargh(2008): 手持热咖啡的人对陌生人评价更'温暖'"
+      },
+      "behaviors": ["加减衣物", "寻找阴凉/温暖处", "蜷缩", "发抖", "出汗"],
+      "abnormal": {
+        "excess": "中暑、恶性高热",
+        "deficit": "失温症"
+      },
+      "social_suppression": {
+        "mechanisms": ["着装规范与社会温度舒适冲突(夏天穿西装)", "时尚在'好看'和'暖和'之间选择前者", "建筑/空调是体温调节的社会-技术系统"],
+        "limit_hours": 0,
+        "description": "体温调节被高度技术化——人类通过穿衣、建筑、空调调控温度"
+      },
+      "exposure_conditions": ["极端冷/热环境", "空调故障", "灾难情境"],
+      "relationships": {
+        "synergistic": [],
+        "inhibitory": ["社会本能(灾难中抢夺保暖资源)"],
+        "conflict": [],
+        "modulated_by": []
+      },
+      "cognitive_effects": {
+        "attention": "极冷/极热显著降低认知能力",
+        "decision_making": "手部温度下降10°C显著降低精细操作能力",
+        "risk_preference": "不变",
+        "moral_judgment": "极端温度时社会判断扭曲",
+        "key_finding": "舒适温度(约22°C)与认知表现最优相关"
+      },
+      "references": [
+        "Morrison, S.F. & Nakamura, K. (2019). Annual Review of Physiology.",
+        "IJzerman, H. et al. (2015). Social thermoregulation."
+      ],
+      "weights": {
+        "normal": 0.03,
+        "exposed": 0.90
+      }
+    },
+    "pain_avoidance": {
+      "name": "疼痛回避",
+      "name_en": "Pain Avoidance",
+      "category": "survival",
+      "definition": "由实际或潜在组织损伤触发的回避和保护驱动力",
+      "triggers": ["伤害感受器激活", "组织损伤信号"],
+      "goal_state": "停止或远离伤害源",
+      "intensity_spectrum": {
+        "mild": {"range": [0.1, 0.3], "description": "不适，可忽略"},
+        "moderate": {"range": [0.3, 0.6], "description": "疼痛，分心"},
+        "severe": {"range": [0.6, 0.85], "description": "剧痛，无法思考"},
+        "extreme": {"range": [0.85, 1.0], "description": "意识改变，压倒一切"}
+      },
+      "neural_basis": {
+        "brain_regions": ["脊髓背角", "丘脑", "体感皮层", "前扣带皮层", "岛叶", "中脑导水管周围灰质"],
+        "hormones": ["内源性阿片"],
+        "neurotransmitters": ["Aδ纤维", "C纤维"],
+        "key_experiment": "Beecher(1946): 二战伤员25%要求吗啡 vs 平民80%——疼痛受情境调制"
+      },
+      "behaviors": ["缩回反射", "逃离", "保护受伤部位", "寻求止痛"],
+      "abnormal": {
+        "excess": "痛觉过敏、慢性疼痛综合征",
+        "deficit": "先天性无痛症(极度危险)"
+      },
+      "social_suppression": {
+        "mechanisms": ["忍耐文化——'男儿有泪不轻弹'", "运动员带伤比赛", "军事训练对抗疼痛", "不同文化对疼痛表达的接受度不同"],
+        "limit_hours": 0,
+        "description": "疼痛信号无法完全消除，只能被'不表达'或'重新解读'"
+      },
+      "exposure_conditions": ["中重度急性疼痛", "慢性疼痛积累", "创伤"],
+      "relationships": {
+        "synergistic": ["战斗/逃跑本能"],
+        "inhibitory": [],
+        "conflict": [],
+        "modulated_by": []
+      },
+      "cognitive_effects": {
+        "attention": "疼痛占据注意力通道",
+        "decision_making": "慢性疼痛导致决策能力下降",
+        "risk_preference": "高度回避额外伤害",
+        "moral_judgment": "剧烈疼痛时道德判断暂停",
+        "key_finding": "Eisenberger et al.(2003): 社交排斥与物理疼痛共享前扣带皮层"
+      },
+      "references": [
+        "Melzack, R. & Wall, P.D. (1965). Pain mechanisms: A new theory. Science.",
+        "Beecher, H.K. (1946). Pain in men wounded in battle."
+      ],
+      "weights": {
+        "normal": 0.02,
+        "exposed": 0.92
+      }
+    },
+    "excretion": {
+      "name": "排泄",
+      "name_en": "Excretion",
+      "category": "survival",
+      "definition": "排出代谢废物的生理驱动力。是所有生理本能中最受社会规则深度压制的。",
+      "triggers": ["膀胱/直肠膨胀信号"],
+      "goal_state": "排泄完成，恢复舒适状态",
+      "intensity_spectrum": {
+        "mild": {"range": [0.1, 0.3], "description": "轻微便意"},
+        "moderate": {"range": [0.3, 0.6], "description": "明显需排泄"},
+        "severe": {"range": [0.6, 0.85], "description": "极度紧迫"},
+        "extreme": {"range": [0.85, 1.0], "description": "即将失控"}
+      },
+      "neural_basis": {
+        "brain_regions": ["骶髓反射弧", "大脑皮层抑制控制"],
+        "hormones": [],
+        "neurotransmitters": [],
+        "key_experiment": "Freud(1905): 肛门期——如厕训练是儿童社会化的第一个里程碑"
+      },
+      "behaviors": ["寻找排泄场所", "排泄行为"],
+      "abnormal": {
+        "excess": "排泄恐惧(社会情境下过度抑制)",
+        "deficit": "失禁(控制丧失)"
+      },
+      "social_suppression": {
+        "mechanisms": ["所有文化最早/最严格训练的本能控制", "排泄需要私密空间——跨文化强规范", "排泄场所被严格划定", "排泄话题被高度禁忌化"],
+        "limit_hours": 3,
+        "description": "3岁儿童就学会数小时内不排泄——这在动物界不可想象。社会压制本能的教科书案例。"
+      },
+      "exposure_conditions": ["极度紧迫", "疾病(腹泻)", "老龄化(控制力下降)"],
+      "relationships": {
+        "synergistic": [],
+        "inhibitory": [],
+        "conflict": [],
+        "modulated_by": ["羞耻", "厌恶", "归属本能(害怕被排斥)"]
+      },
+      "cognitive_effects": {
+        "attention": "紧迫时占据注意力",
+        "decision_making": "不受影响(常态)",
+        "risk_preference": "不变",
+        "moral_judgment": "不变(常态)",
+        "key_finding": "如厕训练与自我意识发展同步"
+      },
+      "references": [
+        "Freud, S. (1905). Three Essays on the Theory of Sexuality.",
+        "De Vries, M.W. et al. (1984). Culture and toilet training."
+      ],
+      "weights": {
+        "normal": 0.02,
+        "exposed": 0.70
+      }
+    },
+    "sexual_drive": {
+      "name": "性欲",
+      "name_en": "Sexual Drive",
+      "category": "reproduction",
+      "definition": "由性激素和感官刺激触发的性行为驱动力",
+      "triggers": ["性激素水平", "感官刺激(视觉/触觉/嗅觉)", "性幻想"],
+      "goal_state": "性满足",
+      "intensity_spectrum": {
+        "mild": {"range": [0.1, 0.3], "description": "潜在的，可忽略"},
+        "moderate": {"range": [0.3, 0.6], "description": "主动关注"},
+        "severe": {"range": [0.6, 0.85], "description": "占据思维，影响判断"},
+        "extreme": {"range": [0.85, 1.0], "description": "失控/成瘾"}
+      },
+      "neural_basis": {
+        "brain_regions": ["下丘脑", "杏仁核", "伏隔核"],
+        "hormones": ["睾酮", "雌激素"],
+        "neurotransmitters": ["多巴胺", "催产素"],
+        "key_experiment": "Ariely & Loewenstein(2006): 性唤起时男性道德边界显著扩大"
+      },
+      "behaviors": ["求偶行为", "性吸引", "性行为", "性竞争"],
+      "abnormal": {
+        "excess": "性成瘾",
+        "deficit": "性欲低下障碍",
+        "deviation": "性欲倒错"
+      },
+      "social_suppression": {
+        "mechanisms": ["所有文化都有复杂性规范", "婚姻制度是社会调制的最普遍形式", "宗教戒律(禁欲/婚前守贞)", "法律硬约束(同意年龄/禁止近亲)", "羞耻和名誉机制"],
+        "limit_hours": 0,
+        "description": "社会压制非常有效但也很脆弱——Freud整理论体系建立在此之上"
+      },
+      "exposure_conditions": ["酒精/药物降低抑制", "去个体化情境", "权力感增强", "社会环境变化"],
+      "relationships": {
+        "synergistic": [],
+        "inhibitory": ["睡眠", "饥饿"],
+        "conflict": [],
+        "modulated_by": ["归属本能", "地位本能"]
+      },
+      "cognitive_effects": {
+        "attention": "注意力偏向性相关刺激",
+        "decision_making": "风险承担增加",
+        "risk_preference": "冒险倾向增强",
+        "moral_judgment": "对潜在伴侣的判断更宽容",
+        "key_finding": "男性性唤起时'道德边界'显著扩大(Ariely & Loewenstein, 2006)"
+      },
+      "references": [
+        "Baumeister, R.F. et al. (2001). Is there a gender difference in strength of sex drive?",
+        "Ariely, D. & Loewenstein, G. (2006). Journal of Behavioral Decision Making.",
+        "Freud, S. (1905). Three Essays on the Theory of Sexuality."
+      ],
+      "weights": {
+        "normal": 0.04,
+        "exposed": 0.75
+      }
+    },
+    "parental_care": {
+      "name": "护幼本能",
+      "name_en": "Parental Care",
+      "category": "reproduction",
+      "definition": "保护和抚育后代的驱动力。少数能让人自愿牺牲生命的本能。",
+      "triggers": ["婴儿特征信号(哭声/大眼睛/气味)", "与后代接触", "感知子女处于危险"],
+      "goal_state": "后代安全、健康成长",
+      "intensity_spectrum": {
+        "mild": {"range": [0.1, 0.3], "description": "普通关怀"},
+        "moderate": {"range": [0.3, 0.6], "description": "主动保护"},
+        "severe": {"range": [0.6, 0.85], "description": "高度警惕，资源倾斜"},
+        "extreme": {"range": [0.85, 1.0], "description": "自我牺牲"}
+      },
+      "neural_basis": {
+        "brain_regions": ["伏隔核", "前额叶", "杏仁核"],
+        "hormones": ["催产素", "催乳素"],
+        "neurotransmitters": ["多巴胺"],
+        "key_experiment": "Harlow(1958): 恒河猴选择布妈妈(接触安慰)而非铁丝妈妈(食物)"
+      },
+      "behaviors": ["喂养", "保护", "教导", "自我牺牲", "对婴儿信号超高敏感度"],
+      "abnormal": {
+        "excess": "过度保护('直升机父母')",
+        "deficit": "产后抑郁、忽视/虐待"
+      },
+      "social_suppression": {
+        "mechanisms": ["社会规范鼓励而非压制护幼本能——是少数被'鼓励'的本能", "育儿方式高度文化依赖", "现代社会通过托儿所等制度部分替代护幼本能"],
+        "limit_hours": 0,
+        "description": "护幼本能是社会规范'支持'而非'压制'的罕见案例"
+      },
+      "exposure_conditions": ["婴儿哭声(杏仁核100ms内响应)", "子女处于危险", "产后哺乳期"],
+      "relationships": {
+        "synergistic": ["恐惧本能(保护后代更警惕)", "归属本能"],
+        "inhibitory": ["自我保全本能(父母为子女牺牲)"],
+        "conflict": [],
+        "modulated_by": []
+      },
+      "cognitive_effects": {
+        "attention": "威胁判断阈值降低",
+        "decision_making": "资源分配优先偏向后代",
+        "risk_preference": "为子女更保守/更冒险(视情境)",
+        "moral_judgment": "'为了孩子'是强有力的道德理由",
+        "key_finding": "Hoekzema et al.(2017): 怀孕改变大脑灰质结构"
+      },
+      "references": [
+        "Harlow, H.F. (1958). The nature of love. American Psychologist.",
+        "Bowlby, J. (1969). Attachment and Loss.",
+        "Hoekzema, E. et al. (2017). Nature Neuroscience."
+      ],
+      "weights": {
+        "normal": 0.10,
+        "exposed": 0.90
+      }
+    },
+    "fight_or_flight": {
+      "name": "战斗或逃跑",
+      "name_en": "Fight or Flight",
+      "category": "safety",
+      "definition": "面对威胁时自动激活的急性应激反应系统。哺乳动物最古老、最强大的防御程序。",
+      "triggers": ["威胁刺激(危险/攻击/巨响/高度)", "感知生命威胁"],
+      "goal_state": "消除威胁或脱离危险",
+      "intensity_spectrum": {
+        "mild": {"range": [0.1, 0.3], "description": "警觉"},
+        "moderate": {"range": [0.3, 0.6], "description": "焦虑"},
+        "severe": {"range": [0.6, 0.85], "description": "恐惧"},
+        "extreme": {"range": [0.85, 1.0], "description": "恐慌/僵直"}
+      },
+      "neural_basis": {
+        "brain_regions": ["杏仁核(低通路12ms/高通路40ms)", "HPA轴", "交感神经系统"],
+        "hormones": ["肾上腺素", "去甲肾上腺素", "皮质醇"],
+        "neurotransmitters": [],
+        "key_experiment": "LeDoux双通路模型; 4F反应(Fight/Flight/Freeze/Fawn)"
+      },
+      "behaviors": ["战斗(反击)", "逃跑(撤离)", "僵直(冻结)", "讨好(社会屈服)"],
+      "abnormal": {
+        "excess": "焦虑障碍、PTSD、恐慌症",
+        "deficit": "风险寻求、危险感知缺乏"
+      },
+      "social_suppression": {
+        "mechanisms": ["法律禁止暴力(压制战斗反应)", "'控制情绪'是社会对恐惧表达的压制", "军事训练是系统化的替代训练(不压制但覆盖)", "现代社会的威胁从物理转向社会(面试焦虑)", "身体仍用同样机制响应"],
+        "limit_hours": 0,
+        "description": "恐惧反应无法被完全压制——微表情和生理变化自动泄露。但社会行为规范能过滤大部分外显行为。"
+      },
+      "exposure_conditions": ["突然物理威胁", "创伤后触发(PTSD)", "恐慌发作"],
+      "relationships": {
+        "synergistic": ["疼痛回避"],
+        "inhibitory": ["所有其他本能(生命威胁下)"],
+        "conflict": [],
+        "modulated_by": []
+      },
+      "cognitive_effects": {
+        "attention": "完全聚焦威胁源",
+        "decision_making": "杏仁核劫持(理性思维被抑制)",
+        "risk_preference": "不适用",
+        "moral_judgment": "暂停",
+        "key_finding": "Goleman(1995): 杏仁核劫持——恐惧时前额叶被抑制"
+      },
+      "references": [
+        "Cannon, W.B. (1915). Bodily Changes in Pain, Hunger, Fear and Rage.",
+        "LeDoux, J. (1996). The Emotional Brain.",
+        "Sapolsky, R. (1994). Why Zebras Don't Get Ulcers."
+      ],
+      "weights": {
+        "normal": 0.05,
+        "exposed": 0.98
+      }
+    },
+    "territoriality": {
+      "name": "领域意识",
+      "name_en": "Territoriality",
+      "category": "safety",
+      "definition": "占有和保卫个人空间及资源的驱动力。被文明化最彻底的生理本能。",
+      "triggers": ["对自有领域的侵犯", "陌生者接近个人空间"],
+      "goal_state": "恢复对领域的控制感和安全感",
+      "intensity_spectrum": {
+        "mild": {"range": [0.1, 0.3], "description": "轻微不适"},
+        "moderate": {"range": [0.3, 0.6], "description": "防御反应"},
+        "severe": {"range": [0.6, 0.85], "description": "攻击性驱逐"},
+        "extreme": {"range": [0.85, 1.0], "description": "暴力领域防御"}
+      },
+      "neural_basis": {
+        "brain_regions": ["杏仁核", "顶叶", "前额叶"],
+        "hormones": ["睾酮"],
+        "neurotransmitters": [],
+        "key_experiment": "Hall(1966): 四种人际距离(亲密/个人/社交/公共)"
+      },
+      "behaviors": ["划定个人空间", "领土标记", "防御入侵", "所有权声明"],
+      "abnormal": {
+        "excess": "偏执型人格障碍",
+        "deficit": "个人空间边界丧失"
+      },
+      "social_suppression": {
+        "mechanisms": ["财产权制度——法律替代武力保卫领域", "城市高密度生活持续压制个人空间本能", "电梯/地铁中的'被迫亲密'", "国家边界是领域本能的最大尺度社会构建"],
+        "limit_hours": 0,
+        "description": "领域本能被文明化最彻底——但'我的座位'现象证明了它在制度真空中仍然裸露"
+      },
+      "exposure_conditions": ["资源争夺", "拥挤环境", "边界被侵犯"],
+      "relationships": {
+        "synergistic": [],
+        "inhibitory": [],
+        "conflict": ["归属本能"],
+        "modulated_by": ["社会规范/法律"]
+      },
+      "cognitive_effects": {
+        "attention": "对入侵者高度警觉",
+        "decision_making": "禀赋效应(对自己东西的过度估值)",
+        "risk_preference": "防御时更激进",
+        "moral_judgment": "所有权的道德化",
+        "key_finding": "Hall(1966): 人际距离的跨文化普适模式"
+      },
+      "references": [
+        "Hall, E.T. (1966). The Hidden Dimension.",
+        "Ardrey, R. (1966). The Territorial Imperative."
+      ],
+      "weights": {
+        "normal": 0.03,
+        "exposed": 0.55
+      }
+    },
+    "risk_aversion": {
+      "name": "风险规避",
+      "name_en": "Risk Aversion",
+      "category": "safety",
+      "definition": "避免不确定负面结果的保守驱动力。行为经济学最核心的人类非理性偏误。",
+      "triggers": ["不确定性情境", "潜在损失信号", "过往负面经验"],
+      "goal_state": "减少不确定性，保护已有资源",
+      "intensity_spectrum": {
+        "mild": {"range": [0.1, 0.3], "description": "轻微谨慎"},
+        "moderate": {"range": [0.3, 0.6], "description": "明显保守"},
+        "severe": {"range": [0.6, 0.85], "description": "严重保守偏误"},
+        "extreme": {"range": [0.85, 1.0], "description": "决策瘫痪"}
+      },
+      "neural_basis": {
+        "brain_regions": ["前岛叶", "杏仁核", "前额叶"],
+        "hormones": [],
+        "neurotransmitters": ["多巴胺"],
+        "key_experiment": "Kahneman & Tversky(1979): 前景理论——损失厌恶系数λ≈2.25"
+      },
+      "behaviors": ["选择确定选项", "维持现状", "购买保险", "过度关注负面可能性"],
+      "abnormal": {
+        "excess": "广泛性焦虑、决策瘫痪",
+        "deficit": "病理性赌博、冲动行为"
+      },
+      "social_suppression": {
+        "mechanisms": ["保险/社保/法律降低个体风险——制度对风险规避的集体满足", "'冒险精神'在某些文化中被推崇——对本能的反向调制", "专业知识降低特定领域的本能性风险规避"],
+        "limit_hours": 0,
+        "description": "风险规避在个人决策中影响较大但在制度化环境中被削弱"
+      },
+      "exposure_conditions": ["重大不确定性决策", "涉及重大损失", "缺乏经验的新领域"],
+      "relationships": {
+        "synergistic": ["战斗/逃跑本能"],
+        "inhibitory": [],
+        "conflict": ["好奇心本能"],
+        "modulated_by": []
+      },
+      "cognitive_effects": {
+        "attention": "过度关注负面可能性",
+        "decision_making": "损失厌恶——损失的心理痛苦是等额收益快乐的2倍+",
+        "risk_preference": "维持现状偏差",
+        "moral_judgment": "保守倾向",
+        "key_finding": "框架效应: 同一结果以'损失'框架呈现更有影响力"
+      },
+      "references": [
+        "Kahneman, D. & Tversky, A. (1979). Prospect theory. Econometrica.",
+        "Kahneman, D. (2011). Thinking, Fast and Slow."
+      ],
+      "weights": {
+        "normal": 0.08,
+        "exposed": 0.65
+      }
+    }
+  }
+}
