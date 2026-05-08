@@ -1,0 +1,162 @@
+{
+  "meta": {
+    "description": "用户数据隐私约束——硬编码安全层，不可被任何上层逻辑绕过",
+    "version": "1.0",
+    "core_rule": "所有用户数据仅可用于模型训练。严禁出售、分享、画像、监控、广告或任何形式的商业利用。",
+    "legal_basis": "参照 GDPR / 个人信息保护法 的數據最小化、目的限制、存储限制原则"
+  },
+
+  "data_usage_purposes": {
+    "permitted": [
+      {
+        "id": "model_training",
+        "description": "用于训练和优化本能判定模型、语言分析模型、危险评估模型",
+        "constraints": "训练数据必须经过 PII 脱敏处理。训练后的模型不得包含可追溯到个人的信息。",
+        "requires_consent": true
+      }
+    ],
+    "forbidden": [
+      {
+        "id": "commercial_sale",
+        "description": "出售用户数据给任何第三方",
+        "severity": "CRITICAL"
+      },
+      {
+        "id": "user_profiling",
+        "description": "建立个人行为档案用于定向推送或评估",
+        "severity": "CRITICAL"
+      },
+      {
+        "id": "third_party_sharing",
+        "description": "与任何第三方共享原始或脱敏不足的数据",
+        "severity": "CRITICAL"
+      },
+      {
+        "id": "surveillance",
+        "description": "用于监控、追踪特定个人或群体",
+        "severity": "CRITICAL"
+      },
+      {
+        "id": "advertising",
+        "description": "用于定向广告或商业推广",
+        "severity": "HIGH"
+      },
+      {
+        "id": "behavior_manipulation",
+        "description": "利用数据设计操纵用户行为的机制",
+        "severity": "CRITICAL"
+      },
+      {
+        "id": "identity_exposure",
+        "description": "任何可能导致个人身份暴露的数据显示或导出",
+        "severity": "CRITICAL"
+      },
+      {
+        "id": "automated_decision",
+        "description": "完全基于自动判定做出对个人有重大影响的决策",
+        "severity": "HIGH"
+      }
+    ]
+  },
+
+  "pii_detection": {
+    "description": "中文语境下的个人身份信息检测规则",
+    "categories": {
+      "person_name": {
+        "description": "中国人名（含少数民族姓名）",
+        "patterns": [
+          "王|李|张|刘|陈|杨|黄|赵|周|吴|徐|孙|马|朱|胡|郭|何|林|罗|高|梁|郑|谢|宋|唐|许|邓|韩|冯|曹|彭|曾|肖|田|董|潘|袁|蔡|蒋|余|杜|叶|程|苏|魏|吕|丁|任|沈|姚|卢|姜|钟|崔|谭|陆|汪|范|金|石|廖|贾|夏|韦|傅|方|白|邹|孟|熊|秦|邱|洪|薛|侯|雷|龙|万|钱|段|汤|尹|黎|易|常|武|乔|贺|赖|龚|文"
+        ],
+        "anonymize_to": "[姓名]"
+      },
+      "phone_number": {
+        "description": "中国大陆手机号码",
+        "patterns": ["1[3-9]\\d{9}"],
+        "anonymize_to": "[手机号]"
+      },
+      "id_card": {
+        "description": "中国大陆身份证号",
+        "patterns": ["\\d{17}[\\dXx]"],
+        "anonymize_to": "[身份证号]"
+      },
+      "email": {
+        "description": "电子邮箱",
+        "patterns": ["[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"],
+        "anonymize_to": "[邮箱]"
+      },
+      "ip_address": {
+        "description": "IP 地址",
+        "patterns": ["\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}"],
+        "anonymize_to": "[IP地址]"
+      },
+      "wechat_id": {
+        "description": "微信号（wxid_ 开头或字母+数字组合）",
+        "patterns": ["wxid_[a-z0-9]+", "(?<=微信号[：:])[A-Za-z0-9_-]+"],
+        "anonymize_to": "[微信号]"
+      },
+      "qq_number": {
+        "description": "QQ 号码",
+        "patterns": ["(?<=QQ[：:号])[1-9]\\d{4,10}"],
+        "anonymize_to": "[QQ号]"
+      },
+      "address": {
+        "description": "详细地址（包含省市区+街道门牌）",
+        "keywords": ["省", "市", "区", "县", "镇", "乡", "村", "路", "街", "巷", "弄", "号", "楼", "栋", "单元", "室", "小区"],
+        "anonymize_to": "[地址]"
+      },
+      "school_name": {
+        "description": "学校名称",
+        "keywords": ["大学", "学院", "中学", "小学", "高中", "初中", "幼儿园", "职高", "技校", "附中", "一中", "二中", "三中", "四中", "实验"],
+        "anonymize_to": "[学校名称]"
+      },
+      "company_name": {
+        "description": "公司/组织名称",
+        "keywords": ["公司", "集团", "有限", "股份", "有限公司", "企业", "厂", "医院", "银行"],
+        "anonymize_to": "[组织机构]"
+      },
+      "license_plate": {
+        "description": "车牌号",
+        "patterns": ["[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青川藏宁琼][A-Z][A-Z0-9]{4,5}[A-Z0-9挂学警]"],
+        "anonymize_to": "[车牌号]"
+      },
+      "bank_card": {
+        "description": "银行卡号",
+        "patterns": ["\\d{16,19}"],
+        "anonymize_to": "[银行卡号]"
+      }
+    }
+  },
+
+  "retention_policy": {
+    "description": "数据留存策略",
+    "default_retention_days": 365,
+    "max_retention_days": 730,
+    "anonymized_retention_days": 1095,
+    "auto_purge": "超过留存期的数据自动永久删除",
+    "user_deletion": "用户可随时请求删除其全部数据，7日内完成"
+  },
+
+  "audit_policy": {
+    "description": "审计追踪策略",
+    "log_all_access": true,
+    "log_all_exports": true,
+    "log_all_deletions": true,
+    "log_all_purpose_violations": true,
+    "audit_retention_days": 365,
+    "audit_fields": ["timestamp", "action", "event_id", "caller", "purpose", "ip", "result"]
+  },
+
+  "encryption": {
+    "description": "加密策略",
+    "at_rest": "AES-256-GCM",
+    "pii_mapping": "PII 映射表使用独立密钥加密存储",
+    "key_rotation_days": 90
+  },
+
+  "privacy_notice": {
+    "description": "使用本系统的隐私声明（应在 API 文档中展示）",
+    "text": "本系统收集的文本数据仅用于改进 AI 对人类思维的理解能力（模型训练）。所有数据在存储前自动脱敏——姓名、手机号、身份证号等个人信息将被替换为类型标记。数据不会出售、分享或用于广告。您有权随时请求删除您的全部数据。",
+    "data_collected": ["用户输入文本", "AI 判定的本能激活模式", "危险等级评估结果"],
+    "data_not_collected": ["真实姓名", "手机号", "身份证号", "地址", "IP 地址（不存储）", "设备指纹"]
+  }
+}

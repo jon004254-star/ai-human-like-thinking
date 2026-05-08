@@ -193,6 +193,10 @@
       {
         "name": "匿名环境监控",
         "description": "当匿名度>0.5且社会调制系数<0.5时——判定可能被用于设计操纵环境→触发警告"
+      },
+      {
+        "name": "隐私数据保护",
+        "description": "PrivacyGuard 在数据入口自动执行 PII 脱敏。所有数据访问均记录审计日志。数据仅用于模型训练，任何其他用途触发硬阻断。详见 privacy_constraints.json"
       }
     ]
   }

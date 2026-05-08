@@ -15,6 +15,7 @@ from pathlib import Path
 
 from .language_analyzer import LanguageAnalyzer, LanguageAnalysisResult
 from .danger_assessor import DangerAssessor, DangerAssessment, DangerLevel
+from .event_store import EventStore, get_event_store
 
 
 # ===== 数据结构定义 =====
@@ -550,6 +551,7 @@ class HumanThinkingEngine:
         self.safety_guard = SafetyGuard()
         self.language_analyzer = LanguageAnalyzer()
         self.danger_assessor = DangerAssessor()
+        self.event_store = EventStore()
 
     def judge(self, person: PersonProfile, event: EventContext) -> JudgmentResult:
         """执行完整的思维判定流程"""
@@ -645,6 +647,10 @@ class HumanThinkingEngine:
 
         # Step 7: 安全审计（不可绕过）
         result = self.safety_guard.audit(person, event, result)
+
+        # Step 8: 自动存档
+        event_id = self.event_store.save(result, person, event)
+        notes.append(f"事件已存档: {event_id}")
 
         return result
 

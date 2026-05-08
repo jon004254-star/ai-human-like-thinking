@@ -1,0 +1,22 @@
+# 事件存储数据（运行时生成）
+src/data/events/
+
+# 隐私模块运行时数据
+src/data/privacy/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
