@@ -1,8 +1,8 @@
 # 事件存储数据（运行时生成）
-src/data/events/
+src/core/data/events/
 
 # 隐私模块运行时数据
-src/data/privacy/
+src/core/data/privacy/
 
 # Python
 __pycache__/

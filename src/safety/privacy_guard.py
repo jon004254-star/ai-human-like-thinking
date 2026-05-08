@@ -441,7 +441,7 @@ class PrivacyGuard:
 
     def __init__(self, data_dir: str = None):
         if data_dir is None:
-            data_dir = Path(__file__).parent.parent / "data" / "privacy"
+            data_dir = Path(__file__).parent.parent / "core" / "data" / "privacy"
         self.data_dir = Path(data_dir)
         self.data_dir.mkdir(parents=True, exist_ok=True)
 

@@ -15,18 +15,13 @@ import json
 import os
 import uuid
 import time
-import sys
 from datetime import datetime, timedelta
 from typing import Dict, List, Optional, Any, Iterator, Tuple
 from dataclasses import dataclass, field, asdict
 from pathlib import Path
 from collections import Counter
 
-# 隐私模块导入
-_parent_dir = Path(__file__).parent.parent
-if str(_parent_dir) not in sys.path:
-    sys.path.insert(0, str(_parent_dir))
-from safety.privacy_guard import PrivacyGuard, get_privacy_guard, PrivacyViolation
+from src.safety.privacy_guard import PrivacyGuard, get_privacy_guard, PrivacyViolation
 
 
 @dataclass
@@ -95,7 +90,7 @@ class EventStore:
 
     def __init__(self, data_dir: str = None, privacy_guard: PrivacyGuard = None):
         if data_dir is None:
-            data_dir = Path(__file__).parent.parent / "data" / "events"
+            data_dir = Path(__file__).parent.parent.parent / "core" / "data" / "events"
         self.data_dir = Path(data_dir)
         self.data_dir.mkdir(parents=True, exist_ok=True)
         self.events_path = self.data_dir / "events.jsonl"

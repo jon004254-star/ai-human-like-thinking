@@ -5,14 +5,9 @@
 """
 
 import json
-import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).parent.parent.parent))
-
-from src.engine.human_thinking_engine import (
-    HumanThinkingEngine, PersonProfile, EventContext
-)
+from src.engines.thinking import HumanThinkingEngine, PersonProfile, EventContext
 
 
 def load_scenarios() -> list:

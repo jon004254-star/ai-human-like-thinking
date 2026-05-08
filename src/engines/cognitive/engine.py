@@ -103,7 +103,7 @@ class CognitiveEngine:
 
     def __init__(self, data_dir: str = None):
         if data_dir is None:
-            data_dir = Path(__file__).parent.parent / "data" / "cognitive"
+            data_dir = Path(__file__).parent.parent.parent / "core" / "data" / "cognitive"
         self.data_dir = Path(data_dir)
         self.factors = self._load_factors()
         self.biases_db = self.factors.get("cognitive_biases", [])
