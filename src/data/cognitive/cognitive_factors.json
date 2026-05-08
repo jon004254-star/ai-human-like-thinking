@@ -1,0 +1,176 @@
+{
+  "meta": {
+    "description": "认知判定引擎因子数据库——认知偏差、防御机制、世界观推理规则、语言风格映射",
+    "version": "1.0",
+    "principle": "不确定性原则：了解越多背景信息→置信度越低而非越高。多假设推理：每次产生3-5个意图假设，每个置信度上限0.7。"
+  },
+
+  "cognitive_biases": [
+    {"id": "confirmation_bias", "name": "确认偏差", "description": "倾向于寻找、解释、记忆能确认自己已有信念的信息，忽略反面证据", "trigger_keywords": ["我就知道", "果然", "你看吧", "我早说", "一直如此"], "severity": "ubiquitous"},
+    {"id": "attribution_bias", "name": "归因偏差", "description": "将自己的成功归因于内在因素、失败归因于外在因素；对他人则相反", "trigger_keywords": ["都怪", "运气不好", "不是我的问题", "他能力不行"], "severity": "ubiquitous"},
+    {"id": "anchoring", "name": "锚定效应", "description": "过度依赖最初获得的信息（锚点）做决策", "trigger_keywords": ["原价", "本来", "应该是", "按理说"], "severity": "ubiquitous"},
+    {"id": "availability_bias", "name": "可得性启发", "description": "高估最近发生的、情绪鲜明的事件的概率", "trigger_keywords": ["最近总是", "到处都在", "怎么天天"], "severity": "ubiquitous"},
+    {"id": "negativity_bias", "name": "负面偏差", "description": "负面信息对心理的影响强于等量的正面信息（约3:1）", "trigger_keywords": ["但是", "可是", "万一", "就怕", "遗憾"], "severity": "ubiquitous"},
+    {"id": "optimism_bias", "name": "乐观偏差", "description": "高估好事发生在自己身上的概率，低估坏事概率", "trigger_keywords": ["应该没事", "不会轮到我的", "我觉得没问题"], "severity": "common"},
+    {"id": "pessimism_bias", "name": "悲观偏差", "description": "在抑郁或焦虑状态下过度预期负面结果", "trigger_keywords": ["肯定不行", "没有希望", "永远不会好", "毫无意义"], "severity": "situational"},
+    {"id": "sunk_cost", "name": "沉没成本谬误", "description": "因已投入的资源而继续坚持错误的路线", "trigger_keywords": ["都做了这么久了", "已经花了", "不能白费", "不甘心"], "severity": "common"},
+    {"id": "halo_effect", "name": "光环效应", "description": "对一个人某一正面特质的印象泛化到对其整体的评价", "trigger_keywords": ["名校毕业", "长得好看", "大公司出来的"], "severity": "common"},
+    {"id": "horns_effect", "name": "尖角效应", "description": "对一个人某一负面特质的印象泛化到对其整体的评价", "trigger_keywords": ["他就是个", "这种人", "一看就不是好人"], "severity": "common"},
+    {"id": "in_group_bias", "name": "内群体偏差", "description": "更偏好自己群体内的成员，对外群体持负面态度", "trigger_keywords": ["我们", "他们", "自己人", "外人", "本地人"], "severity": "ubiquitous"},
+    {"id": "out_group_homogeneity", "name": "外群体同质性偏差", "description": "认为外群体成员都差不多，而自己群体成员各具特色", "trigger_keywords": ["他们都那样", "一个样", "都是"], "severity": "common"},
+    {"id": "fundamental_attribution_error", "name": "基本归因错误", "description": "高估人格因素、低估情境因素来解释他人行为", "trigger_keywords": ["他就是这种人", "本性难移", "骨子里"], "severity": "ubiquitous"},
+    {"id": "self_serving_bias", "name": "自利偏差", "description": "成功时归功于自己，失败时归咎于外部", "trigger_keywords": ["我努力", "我能力强", "环境不好", "别人拖后腿"], "severity": "ubiquitous"},
+    {"id": "dunning_kruger", "name": "达克效应", "description": "能力低者高估自己，能力高者低估自己", "trigger_keywords": ["很简单啊", "我都会", "没什么难的", "我就是运气好"], "severity": "common"},
+    {"id": "hindsight_bias", "name": "后见之明偏差", "description": "事后觉得'我早就知道会这样'", "trigger_keywords": ["我早就知道", "果然如此", "不出所料", "我就说"], "severity": "ubiquitous"},
+    {"id": "framing_effect", "name": "框架效应", "description": "同一信息以不同方式呈现会导致不同决策", "trigger_keywords": ["80%成功率", "20%失败率", "赚了vs亏了"], "severity": "ubiquitous"},
+    {"id": "loss_aversion", "name": "损失厌恶", "description": "损失带来的痛苦约等于等量收益带来快乐的2-2.5倍", "trigger_keywords": ["不能亏", "亏不起", "保住", "怕失去"], "severity": "ubiquitous"},
+    {"id": "status_quo_bias", "name": "现状偏好", "description": "倾向于维持现状，即使改变更有利", "trigger_keywords": ["习惯了", "就这样吧", "懒得改", "不想折腾"], "severity": "common"},
+    {"id": "bandwagon_effect", "name": "从众效应", "description": "因为很多人在做或相信某事而跟随", "trigger_keywords": ["大家都", "别人都", "不这样就不正常", "主流"], "severity": "common"},
+    {"id": "authority_bias", "name": "权威偏差", "description": "过度相信权威人物的意见，不加批判地接受", "trigger_keywords": ["专家说", "领导说的", "老师讲的", "书上写的"], "severity": "common"},
+    {"id": "survivorship_bias", "name": "幸存者偏差", "description": "只看到成功者而忽略失败者，导致对成功概率的误判", "trigger_keywords": ["你看XXX就成功了", "别人能做到你为什么不行", "只要努力就能"], "severity": "common"},
+    {"id": "zero_sum_bias", "name": "零和偏差", "description": "错误地认为一方的收益必然等于另一方的损失", "trigger_keywords": ["不是我赢就是你赢", "此消彼长", "你赚我就亏"], "severity": "common"},
+    {"id": "just_world", "name": "公正世界信念", "description": "认为世界是公正的，人得到其应得的", "trigger_keywords": ["善有善报", "自作自受", "活该", "报应"], "severity": "common"},
+    {"id": "projection_bias", "name": "投射偏差", "description": "假设他人与自己的想法、感受、价值观相同", "trigger_keywords": ["换做是我", "我觉得他也是这么想的", "正常人都"], "severity": "common"},
+    {"id": "stereotype_bias", "name": "刻板印象", "description": "基于群体的概括性认知来判断个体", "trigger_keywords": ["北方人", "南方人", "女的都", "男的就", "那种地方的人"], "severity": "common"},
+    {"id": "affect_heuristic", "name": "情感启发式", "description": "基于当下的情绪感受做判断而非理性分析", "trigger_keywords": ["感觉很", "直觉告诉我", "第一感觉", "莫名觉得"], "severity": "ubiquitous"},
+    {"id": "overconfidence", "name": "过度自信", "description": "对自己的判断或能力过度确信", "trigger_keywords": ["肯定", "绝对", "毫无疑问", "100%", "必然"], "severity": "common"},
+    {"id": "catastrophizing", "name": "灾难化思维", "description": "将小问题放大为灾难性后果", "trigger_keywords": ["完蛋了", "一切都毁了", "没有办法了", "这辈子就"], "severity": "situational"},
+    {"id": "black_and_white", "name": "非黑即白思维", "description": "将事物分为两个极端类别，忽略中间地带", "trigger_keywords": ["要么就", "不是对就是错", "好人坏人", "成功失败"], "severity": "common"},
+    {"id": "emotional_reasoning", "name": "情绪推理", "description": "将情绪感受当成事实证据（'我感觉糟糕，所以事情一定很糟'）", "trigger_keywords": ["我感觉不好所以", "心里不舒服就说明"], "severity": "common"},
+    {"id": "overgeneralization", "name": "过度概括", "description": "基于单一事件得出广泛的一般性结论", "trigger_keywords": ["总是", "从来", "每次", "从不", "一直这样"], "severity": "common"},
+    {"id": "mind_reading", "name": "读心术偏差", "description": "在没有充分证据的情况下假设自己知道别人在想什么", "trigger_keywords": ["他肯定觉得", "她一定认为", "他们看不起我", "大家都知道"], "severity": "common"},
+    {"id": "labeling", "name": "标签化", "description": "用一个负面标签定义自己或他人的整体", "trigger_keywords": ["我就是个废物", "他是个人渣", "loser", "失败者"], "severity": "common"},
+    {"id": "discounting_positive", "name": "贬低正面", "description": "拒绝承认正面经历，认为其'不算数'", "trigger_keywords": ["那只是运气", "谁都能做到", "不算什么", "没什么大不了"], "severity": "situational"},
+    {"id": "should_statement", "name": "'应该'暴政", "description": "用僵化的'应该/必须'规则要求自己或他人", "trigger_keywords": ["我应该", "他必须", "一定要", "非...不可"], "severity": "common"},
+    {"id": "personalization", "name": "个人化", "description": "将外部事件不恰当地归因于自己", "trigger_keywords": ["都是我的错", "都怪我", "我要是不...就不会"], "severity": "situational"},
+    {"id": "impact_bias", "name": "影响偏差", "description": "高估未来事件对情绪影响的强度和持续时间", "trigger_keywords": ["如果...我会崩溃的", "没有...我就完了"], "severity": "common"},
+    {"id": "present_bias", "name": "当下偏差", "description": "过度重视当下的满足而牺牲长远利益", "trigger_keywords": ["先爽了再说", "管不了那么多", "及时行乐"], "severity": "common"},
+    {"id": "ingroup_projection", "name": "内群体投射", "description": "将自己的群体特征投射为所有群体的普遍标准", "trigger_keywords": ["正常人不都这样吗", "大家都是这么过来的", "标准做法"], "severity": "common"}
+  ],
+
+  "defense_mechanisms": [
+    {"id": "denial", "name": "否认", "level": "primitive", "description": "拒绝接受现实或事实，在无意识层面阻止痛苦信息进入意识", "keywords": ["不可能", "这不是真的", "我不信", "假的", "骗人的"]},
+    {"id": "projection", "name": "投射", "level": "primitive", "description": "将自己无法接受的想法、感受或特质归因于他人", "keywords": ["是你...不是我", "你才...", "你怎么能这么想"]},
+    {"id": "splitting", "name": "分裂", "level": "primitive", "description": "将人或事物极端化地视为全好或全坏，无法整合矛盾信息", "keywords": ["你是世界上最好的", "你是最烂的", "完美", "一无是处"]},
+    {"id": "rationalization", "name": "合理化", "level": "neurotic", "description": "用看似合理的解释为自己的行为辩护，掩盖真实动机", "keywords": ["其实这样也好", "塞翁失马", "我本来就不想要", "为了你好"]},
+    {"id": "intellectualization", "name": "理智化", "level": "neurotic", "description": "用抽象、理智的分析来隔离情绪体验", "keywords": ["从理论上讲", "客观上", "理性分析", "数据表明"]},
+    {"id": "repression", "name": "压抑", "level": "neurotic", "description": "将痛苦的记忆或冲动推入无意识", "keywords": ["我不记得了", "没什么感觉", "无所谓了", "过去了"]},
+    {"id": "displacement", "name": "置换", "level": "neurotic", "description": "将对一方的情绪转移到较安全的另一目标上", "keywords": ["对家人发火但其实气的是老板", "踢猫效应", "迁怒"]},
+    {"id": "reaction_formation", "name": "反向形成", "level": "neurotic", "description": "表现出与真实感受相反的行为（如恨一个人却表现得过度友善）", "keywords": ["过度热情对讨厌的人", "表面谦虚内心骄傲"]},
+    {"id": "undoing", "name": "抵消", "level": "neurotic", "description": "通过相反的行为来'撤销'之前的想法或行为", "keywords": ["事后过度弥补", "求神拜佛抵消愧疚"]},
+    {"id": "somatization", "name": "躯体化", "level": "neurotic", "description": "将心理痛苦转化为身体症状", "keywords": ["一说就头疼", "紧张就胃痛", "心累→身体累"]},
+    {"id": "regression", "name": "退行", "level": "neurotic", "description": "退回早期发展阶段的行为模式以应对压力", "keywords": ["哭闹", "撒娇过度", "不理性地依赖他人"]},
+    {"id": "compensation", "name": "补偿", "level": "mature", "description": "在某领域的不足通过在另一领域的卓越来弥补", "keywords": ["长得不高就拼命赚钱", "学业不行就体育拔尖"]},
+    {"id": "sublimation", "name": "升华", "level": "mature", "description": "将不被接受的冲动转化为社会认可的行为（最健康的防御机制）", "keywords": ["攻击冲动→竞技体育", "性冲动→艺术创作", "痛苦→创作"]},
+    {"id": "altruism", "name": "利他", "level": "mature", "description": "通过帮助他人来间接满足自己的需求", "keywords": ["自己经历过痛苦→帮助有相同经历的人"]},
+    {"id": "humor", "name": "幽默", "level": "mature", "description": "用幽默来表达痛苦或不适，既承认感受又保持距离", "keywords": ["自嘲", "黑色幽默", "笑着说悲剧"]},
+    {"id": "suppression", "name": "潜抑", "level": "mature", "description": "有意识地将不愉快的想法推迟处理（与压抑不同，是意识层面的）", "keywords": ["先不想这个", "以后再说", "先忙眼前的事"]},
+    {"id": "anticipation", "name": "预期", "level": "mature", "description": "提前在心理上准备应对未来的压力事件", "keywords": ["做好最坏的打算", "提前演练", "预想各种可能"]},
+    {"id": "isolation_of_affect", "name": "情感隔离", "level": "neurotic", "description": "回忆事件但隔离了伴随的情绪", "keywords": ["平静地讲述创伤经历", "不带感情地描述痛苦"]},
+    {"id": "introjection", "name": "内摄", "level": "primitive", "description": "将他人的价值观或特质纳入自我，不加批判地接受", "keywords": ["我妈说...所以我...", "被PUA后自我贬低"]},
+    {"id": "passive_aggression", "name": "被动攻击", "level": "neurotic", "description": "以间接方式表达攻击性（拖延、'忘记'、讽刺）", "keywords": ["好的（然后不做）", "故意拖延", "冷暴力"]}
+  ],
+
+  "worldview_inference_rules": {
+    "description": "从出生地、学校、社会经历等背景推断世界观倾向。注意：以下均为可能性推理，不是确定性判断。",
+    "birthplace": {
+      "description": "出生地对世界观的影响——地域文化塑造底层价值观框架",
+      "rules": [
+        {"region_pattern": ["东北", "黑龙江", "吉林", "辽宁"], "tendencies": {"collectivism_tendency": 0.35, "direct_communication": 0.25, "humor_coping": 0.2, "climate_resilience": 0.2}},
+        {"region_pattern": ["北京", "上海", "广州", "深圳"], "tendencies": {"competition_awareness": 0.35, "diversity_exposure": 0.3, "pace_stress": 0.25, "status_awareness": 0.2}},
+        {"region_pattern": ["四川", "重庆", "湖南", "湖北", "江西"], "tendencies": {"spice_culture": 0.1, "community_dining": 0.15, "resilience": 0.2}},
+        {"region_pattern": ["江浙", "江苏", "浙江", "福建", "广东"], "tendencies": {"commercial_mindset": 0.3, "pragmatism": 0.25, "family_network": 0.2}},
+        {"region_pattern": ["西北", "甘肃", "青海", "宁夏", "新疆", "西藏"], "tendencies": {"spaciousness_value": 0.2, "ethnic_diversity": 0.25, "hardship_resilience": 0.25}},
+        {"region_pattern": ["河南", "山东", "河北", "山西", "陕西"], "tendencies": {"tradition_respect": 0.3, "family_centrality": 0.3, "education_value": 0.25, "collectivism_tendency": 0.2}},
+        {"region_pattern": ["云南", "贵州", "广西", "海南"], "tendencies": {"ethnic_diversity": 0.25, "slower_pace": 0.2, "nature_connection": 0.2}},
+        {"region_pattern": ["内蒙古"], "tendencies": {"spaciousness_value": 0.3, "pastoral_culture": 0.25, "hospitality": 0.2}},
+        {"region_pattern": ["海外", "国外", "留学", "移民"], "tendencies": {"cultural_duality": 0.35, "identity_complexity": 0.3, "comparative_perspective": 0.25}},
+        {"region_pattern": ["小城镇", "县城", "乡镇", "农村", "山村"], "tendencies": {"community_tightness": 0.25, "guanxi_importance": 0.3, "upward_mobility_drive": 0.2}},
+        {"region_pattern": ["一线城市", "大城市"], "tendencies": {"competition_awareness": 0.3, "alienation": 0.2, "diversity_exposure": 0.25}}
+      ]
+    },
+    "school_type": {
+      "description": "学校类型对认知框架的影响",
+      "rules": [
+        {"school_pattern": ["985", "211", "双一流", "重点大学"], "tendencies": {"achievement_expectation": 0.35, "intellectual_confidence": 0.25, "social_comparison": 0.2}},
+        {"school_pattern": ["普通本科", "二本", "三本", "大专"], "tendencies": {"pragmatic_orientation": 0.25, "status_sensitivity": 0.2, "alternative_path_seeking": 0.15}},
+        {"school_pattern": ["职业学校", "中专", "技校"], "tendencies": {"skill_pride": 0.25, "stigma_awareness": 0.2, "practical_mindset": 0.3}},
+        {"school_pattern": ["重点中学", "重点高中", "实验中学"], "tendencies": {"achievement_pressure": 0.35, "competition_experience": 0.3, "elite_awareness": 0.2}},
+        {"school_pattern": ["普通中学", "农村中学"], "tendencies": {"resource_constraint_awareness": 0.25, "resilience": 0.2}},
+        {"school_pattern": ["国际学校", "私立学校", "贵族学校"], "tendencies": {"global_perspective": 0.3, "privilege_awareness": 0.25, "individualism": 0.2}},
+        {"school_pattern": ["辍学", "没上过", "小学文化", "初中文化"], "tendencies": {"stigma_awareness": 0.3, "street_smart_reliance": 0.25, "formal_education_distrust": 0.2}}
+      ]
+    },
+    "social_experience": {
+      "description": "社会经历对世界观的影响",
+      "rules": [
+        {"experience_pattern": ["创业", "开公司", "做生意", "经营"], "tendencies": {"risk_tolerance": 0.3, "self_reliance": 0.3, "uncertainty_comfort": 0.2}},
+        {"experience_pattern": ["失业", "被裁", "下岗", "没工作"], "tendencies": {"insecurity": 0.3, "resilience": 0.2, "system_distrust": 0.2}},
+        {"experience_pattern": ["当兵", "服役", "参军", "部队"], "tendencies": {"discipline_value": 0.35, "hierarchy_acceptance": 0.25, "comradeship": 0.2}},
+        {"experience_pattern": ["丧亲", "丧偶", "丧子", "亲人去世"], "tendencies": {"existential_depth": 0.35, "mortality_salience": 0.3, "meaning_reevaluation": 0.25}},
+        {"experience_pattern": ["离婚", "分手", "失恋", "感情破裂"], "tendencies": {"trust_erosion": 0.25, "self_reevaluation": 0.2, "independence_growth": 0.2}},
+        {"experience_pattern": ["大病", "重病", "车祸", "事故", "住院"], "tendencies": {"mortality_salience": 0.3, "health_priority": 0.25, "gratitude_shift": 0.2}},
+        {"experience_pattern": ["出国", "留学", "海外", "国外工作"], "tendencies": {"cultural_duality": 0.3, "comparative_perspective": 0.25, "identity_complexity": 0.25}},
+        {"experience_pattern": ["贫困", "穷过", "吃不起饭", "交不起学费"], "tendencies": {"scarcity_mindset": 0.3, "money_anxiety": 0.25, "resilience": 0.25}},
+        {"experience_pattern": ["被骗", "上当", "被坑", "被利用"], "tendencies": {"trust_erosion": 0.3, "hypervigilance": 0.25, "cynicism": 0.2}},
+        {"experience_pattern": ["成功", "获奖", "晋升", "升职", "出名"], "tendencies": {"self_efficacy": 0.3, "status_visibility": 0.2, "impostor_fear": 0.15}},
+        {"experience_pattern": ["校园霸凌", "被欺负", "被孤立", "被嘲笑"], "tendencies": {"hypervigilance": 0.3, "trust_erosion": 0.25, "belongingness_craving": 0.25}},
+        {"experience_pattern": ["有孩子", "当父母", "为人父母", "做妈妈", "做爸爸"], "tendencies": {"caregiving_shift": 0.35, "future_orientation": 0.3, "self_transcendence": 0.2}}
+      ]
+    }
+  },
+
+  "language_style_profiles": {
+    "description": "语言风格特征及其可能反映的认知/人格倾向。注意：语言风格受情境、文化、教育等多重因素影响，不能单独用于判断。",
+    "profiles": [
+      {"id": "direct", "name": "直接型", "features": ["短句为主", "动词密度高", "少修饰词", "主语明确"], "may_indicate": ["高确定性需求", "行动导向", "低语境沟通习惯"], "may_indicate_cautions": "也可能是愤怒或焦虑导致的简化"},
+      {"id": "elaborate", "name": "详尽型", "features": ["长句", "多从句", "修饰语丰富", "细节密集"], "may_indicate": ["高认知需求", "完美主义倾向", "不安全感（需要把话说全）"], "may_indicate_cautions": "也可能是防御性的过度解释"},
+      {"id": "emotional", "name": "情感型", "features": ["感叹号多", "程度副词多(太/很/非常/超级)", "情绪词密集", "比喻丰富"], "may_indicate": ["情绪唤起高", "表达需求强烈", "寻求共情"], "may_indicate_cautions": "也可能是操纵性的情绪渲染"},
+      {"id": "analytical", "name": "分析型", "features": ["逻辑连词多(因为/所以/但是/然而/因此)", "数据引用", "概念词多", "抽象名词多"], "may_indicate": ["理智化防御", "高教育水平", "对情绪的回避"], "may_indicate_cautions": "也可能是理智化——用分析逃避感受"},
+      {"id": "narrative", "name": "叙事型", "features": ["时间序列词(然后/接着/后来/最后)", "具体场景描述", "对话引用", "故事结构"], "may_indicate": ["经验开放度高", "社交分享需求", "意义建构需求"], "may_indicate_cautions": "叙事中的'坏人vs好人'结构可能反映分裂"},
+      {"id": "self_deprecating", "name": "自贬型", "features": ["自我否定高频", "'只是'/'不过'弱化表达", "'可能'/'也许'过多", "道歉频率高"], "may_indicate": ["低自尊", "抑郁倾向", "安全行为(先贬低自己以防止他人攻击)"], "may_indicate_cautions": "也可能是文化性的谦逊表达"},
+      {"id": "assertive", "name": "断言型", "features": ["'肯定'/'绝对'/'一定'高频", "反问句多", "少用模糊词", "'你应该'/'你必须'多"], "may_indicate": ["高自信或过度自信", "控制需求", "认知闭合需求高"], "may_indicate_cautions": "断言式语言可能是防御性的（内心不确定却表现确定）"},
+      {"id": "abstract", "name": "抽象型", "features": ["概念词密度高", "隐喻丰富", "哲学/理论引用", "具体事物少"], "may_indicate": ["高抽象思维能力", "对现实的疏离", "理智化倾向"], "may_indicate_cautions": "过度抽象可能是创伤隔离——用理论讨论回避个人感受"},
+      {"id": "concrete", "name": "具体型", "features": ["具体事物名词多", "感官描述多", "时序清晰", "人物/地点明确"], "may_indicate": ["务实思维", "经验导向", "低模糊容忍度"], "may_indicate_cautions": "过度具体可能是在回避抽象的情感话题"}
+    ]
+  },
+
+  "social_experience_levels": {
+    "description": "社会经验等级定义——不仅仅是'经历了什么'，而是'从经历中学到了什么'",
+    "levels": [
+      {"level": "limited", "name": "有限", "description": "社交圈窄，经历类型单一，可能长期处于相对封闭的环境", "indicators": ["单一职业经历", "同质化社交圈", "缺乏独立性事件(独自旅行/独立生活)"]},
+      {"level": "developing", "name": "发展中", "description": "有一定多样性经历但深度不足，正在拓展社会视野", "indicators": ["1-2次职业/环境转换", "开始接触不同背景的人", "有限但真实的挫折经历"]},
+      {"level": "experienced", "name": "丰富", "description": "经历多样化、有深度挫折和成长、能从经历中提炼智慧", "indicators": ["多次环境转换", "跨阶层/跨文化体验", "经历过重大挫折并整合", "能从他人视角看问题"]},
+      {"level": "seasoned", "name": "老练", "description": "经历极为丰富且深度整合，形成稳定而灵活的世界观", "indicators": ["长期跨领域经验", "对人性有深刻理解", "能在矛盾中保持平衡", "经历过'意义重估'并完成整合"]}
+    ]
+  },
+
+  "intent_inference_rules": {
+    "description": "从语言+本能激活+认知偏差+防御机制→推断可能的深层意图。核心原则：多假设、低置信度、证据驱动。",
+    "rules": [
+      {"surface_pattern": "否认负面情绪", "possible_deep_intents": [
+        {"hypothesis": "自我保全面具——害怕暴露脆弱会被利用或拒绝", "confidence_ceiling": 0.6, "supporting_evidence": ["使用理智化/否认防御", "自我保全面具本能激活"], "opposing_evidence": ["可能确实内心平静", "文化性的'不麻烦别人'习惯"]},
+        {"hypothesis": "寻求帮助但不希望显得无能——试探性求助信号", "confidence_ceiling": 0.5, "supporting_evidence": ["主动提及困境但用'没事'包装", "归属感裸露"], "opposing_evidence": ["可能纯粹是社交礼仪"]},
+        {"hypothesis": "正在自我消化中——需要时间而非干预", "confidence_ceiling": 0.5, "supporting_evidence": ["语言中有反思结构", "潜抑防御"], "opposing_evidence": ["如果是反复提及同一困境则可能是求助"]}
+      ]},
+      {"surface_pattern": "过度批评他人", "possible_deep_intents": [
+        {"hypothesis": "投射——批评他人的特质正是自己无法接受的自身特质", "confidence_ceiling": 0.55, "supporting_evidence": ["批评内容异常具体", "情绪强度与事件不匹配", "投射防御机制激活"], "opposing_evidence": ["批评可能完全客观公正"]},
+        {"hypothesis": "地位防御——通过贬低他人来维护受损的自尊", "confidence_ceiling": 0.55, "supporting_evidence": ["地位追求本能激活", "近期遭受威胁性事件"], "opposing_evidence": ["可能是正常的道德判断"]},
+        {"hypothesis": "求助信号——'为什么他们可以而我不能'的变相表达", "confidence_ceiling": 0.45, "supporting_evidence": ["语言中有比较结构", "自卑/无力感线索"], "opposing_evidence": ["可能确实是愤怒而非求助"]}
+      ]},
+      {"surface_pattern": "极端积极/乐观表达", "possible_deep_intents": [
+        {"hypothesis": "反向形成——用过度积极掩盖深层焦虑或恐惧", "confidence_ceiling": 0.55, "supporting_evidence": ["积极表达过度频繁/强度异常", "反向形成防御激活", "焦虑/恐惧本能激活"], "opposing_evidence": ["可能是真正的乐观人格"]},
+        {"hypothesis": "社会期望——'我必须积极'的社会压力（toxic positivity）", "confidence_ceiling": 0.5, "supporting_evidence": ["社会调制系数高", "社交媒体语境", "自我一致需求高"], "opposing_evidence": ["可能是真实的正向情感"]}
+      ]},
+      {"surface_pattern": "反复确认/寻求保证", "possible_deep_intents": [
+        {"hypothesis": "焦虑驱动的安全行为——需要外部保证来暂时缓解内在不确定", "confidence_ceiling": 0.6, "supporting_evidence": ["恐惧本能激活", "灾难化思维偏差", "低自尊线索"], "opposing_evidence": ["可能确实是信息不足需要确认"]},
+        {"hypothesis": "依附需求——确认在关系中的安全感", "confidence_ceiling": 0.55, "supporting_evidence": ["归属感裸露", "分离焦虑线索", "关系语境"], "opposing_evidence": ["可能是实用性的问题"]}
+      ]},
+      {"surface_pattern": "沉默/回避/少言", "possible_deep_intents": [
+        {"hypothesis": "压抑/情感隔离——用沉默保护自己不受情绪侵袭", "confidence_ceiling": 0.55, "supporting_evidence": ["压抑/情感隔离防御激活", "创伤背景", "短答句+无细节"], "opposing_evidence": ["可能是内向性格的正常表现"]},
+        {"hypothesis": "被动攻击——用沉默表达愤怒或不满", "confidence_ceiling": 0.5, "supporting_evidence": ["被动攻击防御激活", "此前有冲突", "沉默伴随身体语言线索"], "opposing_evidence": ["可能只是需要时间思考"]},
+        {"hypothesis": "应对策略——正在内部处理，无意交流", "confidence_ceiling": 0.5, "supporting_evidence": ["潜抑防御", "独立性强", "非回避技术性话题"], "opposing_evidence": ["如果沉默伴有痛苦线索则可能是压抑"]}
+      ]}
+    ]
+  }
+}

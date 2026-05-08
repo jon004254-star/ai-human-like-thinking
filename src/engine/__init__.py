@@ -10,6 +10,15 @@ from .human_thinking_engine import (
 from .event_store import EventStore, get_event_store
 from .language_analyzer import LanguageAnalyzer, LanguageAnalysisResult
 from .danger_assessor import DangerAssessor, DangerAssessment, DangerLevel
+from .cognitive_engine import (
+    CognitiveEngine,
+    CognitiveAnalysisResult,
+    WorldviewInference,
+    LanguageStyleAnalysisResult,
+    CognitiveBiasResult,
+    DefenseMechanismResult,
+    IntentHypothesis,
+)
 
 # 隐私模块（从 safety 包导入）
 import sys

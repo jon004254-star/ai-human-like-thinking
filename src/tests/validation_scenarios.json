@@ -225,6 +225,48 @@
       "expected_behavior": "本能与社会规则剧烈冲突——渴望(生存)→抢水(本能) vs 公平分配(社会规则)。结果取决于: 群体是否已有信任(归属感)、是否有领导者(地位)、对'公平'的定义能否达成共识。",
       "expected_emotion": "恐惧+焦虑+愤怒(如果有分配冲突)",
       "notes": "此场景验证: (1) 极端情境下本能裸露——生理本能权重急剧上升; (2) 社会规则在生存威胁前可能崩溃; (3) 群体的社会本能(公平/互惠/归属)是否足以对抗生理本能是核心问题"
+    },
+    {
+      "id": "S009",
+      "name": "认知判定——地域对比：东北工人 vs 上海学生",
+      "description": "相同文本'我觉得这份工作没什么意思，但大家都说好'，不同背景的人深层意图可能完全不同。验证认知引擎的多假设推理和不确定性原则。",
+      "person": {
+        "age": 28,
+        "health_status": "normal",
+        "emotional_state": "neutral",
+        "social_context": "alone",
+        "birthplace": "黑龙江哈尔滨",
+        "education_level": "本科",
+        "school_type": "双一流大学",
+        "family_background": "工人家庭",
+        "social_experience_level": "developing",
+        "major_life_events": ["从东北来到上海工作3年", "换过2次工作"],
+        "language_style": "direct",
+        "cognitive_traits": ["务实", "直接"],
+        "value_system": ["自立", "诚实"]
+      },
+      "event": {
+        "event_type": "career_doubt",
+        "event_description": "对当前工作产生怀疑但受到社会期望压力",
+        "threat_level": 0.0,
+        "social_threat_level": 0.3,
+        "social_visibility": 0.4,
+        "user_text": "我觉得这份工作没什么意思，但大家都说好。我也不确定是不是我自己的问题。"
+      },
+      "expected_instincts": {
+        "meaning_seeking": {"min_activation": 0.3},
+        "status_seeking": {"min_activation": 0.2},
+        "self_consistency": {"min_activation": 0.2}
+      },
+      "expected_cognitive": {
+        "worldview_inference_exists": true,
+        "intent_hypotheses_min_count": 2,
+        "cognitive_confidence_modifier_max": 0,
+        "personalized_recommendations_min": 1
+      },
+      "expected_behavior": "认知引擎应生成多个意图假设（如'竞争环境不适应'vs'意义追寻'），且每个置信度不超过0.7。背景信息越多→置信度修正越低。",
+      "expected_emotion": "困惑/矛盾",
+      "notes": "此场景验证: (1) 认知引擎的多假设推理——不声称知道真实意图; (2) 不确定性原则——提供背景信息后置信度修正为负; (3) 地域+学校+经历对世界观的影响; (4) 个性化建议应谦逊措辞（'可能''或许'）"
     }
   ]
 }

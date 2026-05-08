@@ -65,6 +65,14 @@ class EventRecord:
     pii_categories: list = field(default_factory=list)  # 检测到的 PII 类别
     privacy_purpose: str = "model_training"  # 硬编码——数据仅用于模型训练
 
+    # 认知判定层
+    cognitive_biases_detected: list = field(default_factory=list)
+    defense_mechanisms_detected: list = field(default_factory=list)
+    intent_hypotheses: list = field(default_factory=list)
+    personalized_recommendations: list = field(default_factory=list)
+    cognitive_confidence_modifier: float = 0.0
+    worldview_summary: str = ""
+
     # 反馈层（后续标注用）
     feedback_verified: bool = False
     feedback_correct: Optional[bool] = None  # True=预测正确, False=预测错误, None=未标注
@@ -162,6 +170,16 @@ class EventStore:
                 "emotional_state": person.emotional_state,
                 "social_context": person.social_context,
                 "recent_events": person.recent_events,
+                "birthplace": person.birthplace,
+                "education_level": person.education_level,
+                "school_type": person.school_type,
+                "family_background": person.family_background,
+                "social_experience_level": person.social_experience_level,
+                "social_competence": person.social_competence,
+                "major_life_events": person.major_life_events,
+                "language_style": person.language_style,
+                "cognitive_traits": person.cognitive_traits,
+                "value_system": person.value_system,
             },
             event_context={
                 "event_type": event.event_type,
@@ -191,6 +209,13 @@ class EventStore:
             anonymized=pii_detected,
             pii_detected=pii_detected,
             pii_categories=pii_categories,
+            # 认知判定字段
+            cognitive_biases_detected=result.cognitive_biases_detected,
+            defense_mechanisms_detected=result.defense_mechanisms_detected,
+            intent_hypotheses=result.intent_hypotheses,
+            personalized_recommendations=result.personalized_recommendations,
+            cognitive_confidence_modifier=result.cognitive_confidence_modifier,
+            worldview_summary=result.worldview_inference.summary if result.worldview_inference else "",
         )
 
     def _append_to_jsonl(self, record: EventRecord):
@@ -508,11 +533,16 @@ class EventStore:
                 "danger_score": r.danger_score,
                 "fixation_detected": r.fixation_detected,
                 "language_filter_score": r.language_filter_score,
+                "cognitive_confidence_modifier": r.cognitive_confidence_modifier,
                 "instincts": {
                     key: act["activation"]
                     for key, act in r.instinct_activations.items()
                 },
             }
+            if r.cognitive_biases_detected:
+                features["cognitive_biases"] = r.cognitive_biases_detected
+            if r.defense_mechanisms_detected:
+                features["defense_mechanisms"] = r.defense_mechanisms_detected
 
             # 标签（如果有反馈）
             label = None
@@ -581,7 +611,9 @@ class EventStore:
         fieldnames = [
             "event_id", "timestamp", "age", "age_stage", "danger_level", "danger_score",
             "social_modulation_coeff", "confidence", "fixation_detected",
-            "language_filter_score", "predicted_emotion", "predicted_behavior",
+            "language_filter_score", "cognitive_confidence_modifier",
+            "predicted_emotion", "predicted_behavior",
+            "cognitive_biases_detected", "defense_mechanisms_detected",
             "dominant_drivers", "decoded_deep_intent", "user_text",
             "feedback_verified", "feedback_correct",
         ]
@@ -592,6 +624,8 @@ class EventStore:
             row = asdict(r)
             row["age"] = r.person_profile.get("age", "")
             row["dominant_drivers"] = " | ".join(r.dominant_drivers[:3])
+            row["cognitive_biases_detected"] = " | ".join(r.cognitive_biases_detected)
+            row["defense_mechanisms_detected"] = " | ".join(r.defense_mechanisms_detected)
             writer.writerow(row)
 
         csv_str = output.getvalue()

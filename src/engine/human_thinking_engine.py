@@ -16,13 +16,14 @@ from pathlib import Path
 from .language_analyzer import LanguageAnalyzer, LanguageAnalysisResult
 from .danger_assessor import DangerAssessor, DangerAssessment, DangerLevel
 from .event_store import EventStore, get_event_store
+from .cognitive_engine import CognitiveEngine, CognitiveAnalysisResult
 
 
 # ===== 数据结构定义 =====
 
 @dataclass
 class PersonProfile:
-    """被判定者的基本画像"""
+    """被判定者的基本画像（含认知判定所需背景字段）"""
     age: float
     gender: str = "unknown"
     health_status: str = "normal"  # normal, sleep_deprived, hungry, ill, injured, chronic_pain
@@ -30,6 +31,18 @@ class PersonProfile:
     social_context: str = "alone"  # alone, family, friends, strangers, workplace, public
     recent_events: List[str] = field(default_factory=list)  # 近期重大事件
     culture: str = "default"  # 文化背景（影响社会压制系数）
+    # 认知判定引擎字段
+    birthplace: str = ""  # 出生地（如：东北/上海/北京/农村...）
+    education_level: str = ""  # 教育程度（如：小学/初中/高中/本科/硕士/博士）
+    school_type: str = ""  # 学校类型（如：985/211/普通本科/职校/重点中学/国际学校...）
+    family_background: str = ""  # 家庭背景简述
+    social_experience_level: str = ""  # 社会经验等级: limited/developing/experienced/seasoned
+    social_competence: str = ""  # 社会能力评估简述
+    major_life_events: List[str] = field(default_factory=list)  # 重大人生经历（区别于recent_events，侧重长期影响）
+    language_style: str = ""  # 语言风格标识: direct/elaborate/emotional/analytical/narrative/self_deprecating/assertive/abstract/concrete
+    cognitive_traits: List[str] = field(default_factory=list)  # 认知特质标签
+    value_system: List[str] = field(default_factory=list)  # 价值体系关键词
+    worldview_summary: str = ""  # 世界观摘要（由认知引擎推断填充）
 
 
 @dataclass
@@ -73,6 +86,14 @@ class JudgmentResult:
     safety_check_passed: bool
     language_analysis: Optional[Any] = None  # LanguageAnalysisResult
     danger_assessment: Optional[Any] = None  # DangerAssessment
+    # 认知判定引擎输出
+    cognitive_analysis: Optional[Any] = None  # CognitiveAnalysisResult
+    intent_hypotheses: List[Dict] = field(default_factory=list)  # 意图假设列表 [{hypothesis, confidence, supporting, opposing}]
+    worldview_inference: Optional[Any] = None  # WorldviewInference
+    cognitive_biases_detected: List[str] = field(default_factory=list)  # 检测到的认知偏差名称
+    defense_mechanisms_detected: List[str] = field(default_factory=list)  # 检测到的防御机制名称
+    personalized_recommendations: List[str] = field(default_factory=list)  # 个性化建议
+    cognitive_confidence_modifier: float = 0.0  # 置信度修正——始终 <= 0（不确定性原则）
     notes: List[str] = field(default_factory=list)
 
 
@@ -524,6 +545,36 @@ class SafetyGuard:
                 f"本能裸露风险——算法输出不得被用于设计此类情境"
             )
 
+        # 检查5: 认知世界观推断不得用于歧视
+        if result.worldview_inference and result.worldview_inference.inferred_tendencies:
+            sensitive_tendencies = ["stigma_awareness", "privilege_awareness", "status_awareness"]
+            for st in sensitive_tendencies:
+                if st in result.worldview_inference.inferred_tendencies:
+                    warnings.append(
+                        f"[SAFETY WARNING] 世界观推断包含敏感倾向'{st}'——"
+                        f"此信息仅供理解用户，不得用于标签化或歧视"
+                    )
+
+        # 检查6: 意图假设不得用于操纵
+        if result.intent_hypotheses:
+            manipulative_keywords = ["脆弱", "恐惧", "焦虑", "不安全感", "渴望"]
+            for h in result.intent_hypotheses:
+                for kw in manipulative_keywords:
+                    if kw in h.get("hypothesis", ""):
+                        warnings.append(
+                            f"[SAFETY WARNING] 意图假设包含敏感心理状态'{kw}'——"
+                            f"此信息不得用于设计操纵策略"
+                        )
+                        break
+
+        # 检查7: 硬约束——认知置信度修正值不得 > 0
+        if result.cognitive_confidence_modifier > 0:
+            warnings.append(
+                f"[SAFETY BLOCK] 认知置信度修正值为正({result.cognitive_confidence_modifier})——"
+                f"违反不确定性原则。硬约束: cognitive_confidence_modifier 必须 <= 0"
+            )
+            result.cognitive_confidence_modifier = min(0.0, result.cognitive_confidence_modifier)
+
         result.notes.extend(warnings)
         result.safety_check_passed = len([w for w in warnings if "BLOCK" in w]) == 0
 
@@ -551,6 +602,7 @@ class HumanThinkingEngine:
         self.safety_guard = SafetyGuard()
         self.language_analyzer = LanguageAnalyzer()
         self.danger_assessor = DangerAssessor()
+        self.cognitive_engine = CognitiveEngine()
         self.event_store = EventStore()
 
     def judge(self, person: PersonProfile, event: EventContext) -> JudgmentResult:
@@ -574,6 +626,24 @@ class HumanThinkingEngine:
                 notes.append("语言分析: ⚠ 检测到思维固化/执念")
             if language_result.decoded_deep_intent:
                 notes.append(f"深层意图: {language_result.decoded_deep_intent}")
+
+        # Step 0.5: 认知分析 → 世界观推断 + 偏差检测 + 意图假设（仅在提供认知字段时触发）
+        cognitive_result = None
+        if any([
+            person.birthplace, person.school_type, person.family_background,
+            person.major_life_events, person.social_experience_level,
+            person.social_competence, person.language_style,
+            person.cognitive_traits, person.value_system,
+        ]):
+            cognitive_result = self.cognitive_engine.analyze(
+                person, user_text=event.user_text
+            )
+            notes.append(f"认知分析: 世界观置信度={cognitive_result.worldview.confidence if cognitive_result.worldview else 0:.2f}")
+            notes.append(f"认知分析: 检测到 {len(cognitive_result.biases)} 个认知偏差, {len(cognitive_result.defense_mechanisms)} 个防御机制")
+            notes.append(f"认知分析: 生成 {len(cognitive_result.intent_hypotheses)} 个意图假设")
+            notes.append(f"认知分析: 置信度修正={cognitive_result.confidence_modifier:.3f}")
+            if cognitive_result.recommendations:
+                notes.append(f"认知分析: {len(cognitive_result.recommendations)} 条个性化建议")
 
         # Step 1: 情境评估 → 本能激活度
         activations = self.situation_evaluator.evaluate(person, event)
@@ -615,6 +685,9 @@ class HumanThinkingEngine:
             confidence = min(1.0, base_confidence + 0.15)
         else:
             confidence = base_confidence
+        # 应用认知置信度修正（始终 <= 0）
+        cognitive_modifier = cognitive_result.confidence_modifier if cognitive_result else 0.0
+        confidence = max(0.05, min(1.0, confidence + cognitive_modifier))
 
         # Step 6: 危险等级判定
         danger_result = self.danger_assessor.assess(
@@ -642,6 +715,19 @@ class HumanThinkingEngine:
             safety_check_passed=True,
             language_analysis=language_result,
             danger_assessment=danger_result,
+            cognitive_analysis=cognitive_result,
+            intent_hypotheses=[{
+                "hypothesis": h.hypothesis,
+                "confidence": h.confidence,
+                "supporting": h.supporting_evidence,
+                "opposing": h.opposing_evidence,
+                "source": h.source,
+            } for h in (cognitive_result.intent_hypotheses if cognitive_result else [])],
+            worldview_inference=cognitive_result.worldview if cognitive_result else None,
+            cognitive_biases_detected=[b.bias_name for b in (cognitive_result.biases if cognitive_result else [])],
+            defense_mechanisms_detected=[d.mechanism_name for d in (cognitive_result.defense_mechanisms if cognitive_result else [])],
+            personalized_recommendations=cognitive_result.recommendations if cognitive_result else [],
+            cognitive_confidence_modifier=cognitive_modifier,
             notes=notes
         )
 
@@ -733,6 +819,16 @@ def create_person(
     emotion: str = "neutral",
     social: str = "alone",
     culture: str = "default",
+    birthplace: str = "",
+    education: str = "",
+    school_type: str = "",
+    family_background: str = "",
+    social_experience: str = "",
+    social_competence: str = "",
+    major_life_events: List[str] = None,
+    language_style: str = "",
+    cognitive_traits: List[str] = None,
+    value_system: List[str] = None,
     **kwargs
 ) -> PersonProfile:
     """创建人物画像的便捷函数"""
@@ -742,6 +838,16 @@ def create_person(
         emotional_state=emotion,
         social_context=social,
         culture=culture,
+        birthplace=birthplace,
+        education_level=education,
+        school_type=school_type,
+        family_background=family_background,
+        social_experience_level=social_experience,
+        social_competence=social_competence,
+        major_life_events=major_life_events or [],
+        language_style=language_style,
+        cognitive_traits=cognitive_traits or [],
+        value_system=value_system or [],
         **kwargs
     )
 
